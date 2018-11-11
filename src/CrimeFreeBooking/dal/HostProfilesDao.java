@@ -37,6 +37,7 @@ public class HostProfilesDao {
 			insertStmt.setString(4, hostProfile.getHostLocation());
 			insertStmt.setString(5, hostProfile.getHostResponseTime());
 			insertStmt.setInt(6, hostProfile.getHostTotalListing());
+			insertStmt.executeUpdate();
 			
 			return hostProfile;
 		} catch (SQLException e) {
