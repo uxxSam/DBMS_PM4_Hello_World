@@ -211,4 +211,14 @@ public class Listings {
 	public void setBeds(int beds) {
 		this.beds = beds;
 	}
+
+	@Override
+	public String toString() {
+		return "Listings [listingId=" + listingId + ", hostProfile=" + hostProfile + ", url=" + url + ", title=" + title
+				+ ", price=" + price + ", description=" + description + ", imageUrl=" + imageUrl + ", street1="
+				+ street1 + ", street2=" + street2 + ", city=" + city + ", state=" + state + ", zipCode=" + zipCode
+				+ ", latitude=" + latitude + ", longitude=" + longitude + ", propertyType=" + propertyType
+				+ ", roomType=" + roomType + ", accomodates=" + accomodates + ", bathrooms=" + bathrooms + ", bedrooms="
+				+ bedrooms + ", beds=" + beds + "]";
+	}
 }
