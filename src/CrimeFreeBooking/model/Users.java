@@ -109,4 +109,12 @@ public class Users {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
+	@Override
+	public String toString() {
+		return "Users [userName=" + userName + ", userPassword=" + userPassword + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", street1=" + street1 + ", street2=" + street2 + ", city=" + city
+				+ ", state=" + state + ", zipCode=" + zipCode + ", country=" + country + "]";
+	}
+	
 }
