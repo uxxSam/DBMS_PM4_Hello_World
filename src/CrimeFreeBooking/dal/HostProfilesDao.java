@@ -79,7 +79,7 @@ public class HostProfilesDao {
 		}
 	}
 
-	public BlogComments delete(HostProfiles hostProfile) throws SQLException {
+	public HostProfiles delete(HostProfiles hostProfile) throws SQLException {
 		String deleteHostProfile = "DELETE FROM HostProfiles WHERE HostId=?;";
 		Connection connection = null;
 		PreparedStatement deleteStmt = null;
