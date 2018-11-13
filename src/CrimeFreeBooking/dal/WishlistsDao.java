@@ -132,7 +132,7 @@ public class WishlistsDao {
 		return null;
 	}
 	
-	public List<Wishlists> getWishlistsForUser(User user) throws SQLException {
+	public List<Wishlists> getWishlistsForUser(Users user) throws SQLException {
 		List<Wishlists> wishlists = new ArrayList<Wishlists>();
 		String selectWishlists =
 			"SELECT WishlistId,UserName,ListingId " +
@@ -144,7 +144,7 @@ public class WishlistsDao {
 		try {
 			connection = connectionManager.getConnection();
 			selectStmt = connection.prepareStatement(selectWishlists);
-			selectStmt.setString(1, user.getUsername());
+			selectStmt.setString(1, user.getUserName());
 			results = selectStmt.executeQuery();
 			UsersDao usersDao = UsersDao.getInstance();
 			ListingsDao listingsDao = ListingsDao.getInstance();
