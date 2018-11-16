@@ -1,8 +1,9 @@
 package CrimeFreeBooking.servlet;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,14 +17,14 @@ import CrimeFreeBooking.dal.UsersDao;
 /**
  * Servlet implementation class FindUser
  */
-@WebServlet("/FindUser")
-public class FindUser extends HttpServlet {
+@WebServlet("/FindUsers")
+public class FindUsers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindUser() {
+    public FindUsers() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,26 +36,26 @@ public class FindUser extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		String username = request.getParameter("username");
-		System.out.println(username);
-		
 		response.setHeader("Content-Type", "text/html; charset=UTF-8");
-		Writer out=response.getWriter();
-		
+		List<Users> userList = new ArrayList<>();
+		List<String> messageList = new ArrayList<>();
 		Users requestedUser = null;
 		
 		try {
 			requestedUser = UsersDao.getInstance().getUserByUserName(username);
 		} catch (SQLException e) {
-			out.write("User does not exist");
+			messageList.add("User does not exist");
 		} finally {
 			if (requestedUser != null) {
-				out.write(requestedUser.toString());
+				userList.add(requestedUser);
+				messageList.add("Success!");
 			} else {
-				out.write("User does not exist");
+				messageList.add("User does not exist");
 			}
 			
-			out.flush();
-			out.close();
+			request.setAttribute("user", userList);
+			request.setAttribute("messages", messageList);
+			request.getRequestDispatcher("/find-user").forward(request, response);
 		}
 	}
 }

@@ -1,8 +1,9 @@
 package CrimeFreeBooking.servlet;
 
 import java.io.IOException;
-import java.io.Writer;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,20 +46,19 @@ public class CreateUser extends HttpServlet {
 		String zipcode = request.getParameter("zipcode");
 		String country = request.getParameter("country");
 		response.setHeader("Content-Type", "text/html; charset=UTF-8");
-		Writer out=response.getWriter();
+		List<String> messageList = new ArrayList<>();
 		
 		Users newUser = new Users(username, password, firstname, lastname, street1, street2,
 				city, state, Integer.parseInt(zipcode), country);
 		
 		try {
 			UsersDao.getInstance().create(newUser);
-			out.write("Successfully created user!");
+			messageList.add("Successfully created user");
 		} catch (SQLException e) {
-			out.write("Failed to create user");
+			messageList.add("Failed to create user");
 		} finally {
-			out.flush();
-			out.close();
+			request.setAttribute("messages", messageList);
+			request.getRequestDispatcher("/create-user").forward(request, response);
 		}			
 	}
-
 }

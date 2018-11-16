@@ -43,4 +43,10 @@ public class Wishlists {
 	public void setListing(Listings listing) {
 		this.listing = listing;
 	}
+	
+	@Override
+	public String toString() {
+		return "wishlistId: " + this.wishlistId + "\n"
+				+ this.listing.toString() + "\n";
+	}
 }
