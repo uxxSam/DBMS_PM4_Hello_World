@@ -31,9 +31,12 @@
     <servlet-name>CreatePreference</servlet-name>
     <url-pattern>/create-preference</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>DeletePreference</servlet-name>
     <servlet-class>CrimeFreeBooking.servlet.DeletePreference</servlet-class>
-  	</servlet>
+  </servlet>
+    <servlet>
+    <servlet-name>FindListingByPrice</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.FindListingByPrice</servlet-class>
+  </servlet>
 </web-app>
