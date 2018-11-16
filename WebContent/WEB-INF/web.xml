@@ -2,15 +2,24 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
   <display-name>BlogApplication</display-name>
   <welcome-file-list>
-    <welcome-file>FindListing.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <servlet-name>FindUser</servlet-name>
-    <servlet-class>CrimeFreeBooking.servlet.FindUser</servlet-class>
-    <jsp-file>/Users.jsp</jsp-file>
+    <servlet-name>FindUsers</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.FindUsers</servlet-class>
+    <jsp-file>/FindUser.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>FindUser</servlet-name>
-    <url-pattern>/user</url-pattern>
+    <servlet-name>FindUsers</servlet-name>
+    <url-pattern>/find-user</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>CreateUser</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.CreateUser</servlet-class>
+    <jsp-file>/CreateUser.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateUser</servlet-name>
+    <url-pattern>/create-user</url-pattern>
   </servlet-mapping>
 </web-app>

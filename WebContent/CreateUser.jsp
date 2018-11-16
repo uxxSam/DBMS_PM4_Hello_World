@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +11,6 @@
 <title>Crime Free Booking</title>
 </head>
 <body>
-     <h3>Lookup Users by User Name</h3>
-      <hr>
-      <form action="FindUser" method="get">
-      	UserName ：<input type="text" name="username"/><br>
-        <input type="submit" />
-      </form>
-      <br>
-
       <h3>Create a New User</h3>
       <hr>
       <form action="CreateUser" method="post">
@@ -30,5 +26,10 @@
       	Country ：<input type="text" name="country"/><br>
         <input type="submit" />
       </form>
+      <br>
+      <c:forEach items="${messages}" var="messages" >
+     	 <span id="successMessage"><b>${messages}</b></span>
+	  </c:forEach>
+      <br>
 </body>
 </html>
