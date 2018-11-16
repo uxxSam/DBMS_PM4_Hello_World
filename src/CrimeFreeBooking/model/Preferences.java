@@ -2,11 +2,11 @@ package CrimeFreeBooking.model;
 
 public class Preferences {
 	protected int preferenceId;
-	protected Users user;
+	protected String user;
 	protected int bathrooms;
 	protected int bedrooms;
 	
-	public Preferences(int preferenceId, Users user, int bathrooms, int bedrooms) {
+	public Preferences(int preferenceId, String user, int bathrooms, int bedrooms) {
 		this.preferenceId = preferenceId;
 		this.user = user;
 		this.bathrooms = bathrooms;
@@ -17,7 +17,7 @@ public class Preferences {
 		this.preferenceId = preferenceId;
 	}
 
-	public Preferences(Users user, int bathrooms, int bedrooms) {
+	public Preferences(String user, int bathrooms, int bedrooms) {
 		this.user = user;
 		this.bathrooms = bathrooms;
 		this.bedrooms = bedrooms;
@@ -31,11 +31,11 @@ public class Preferences {
 		this.preferenceId = preferenceId;
 	}
 
-	public Users getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
@@ -54,4 +54,11 @@ public class Preferences {
 	public void setBedrooms(int bedrooms) {
 		this.bedrooms = bedrooms;
 	}
+
+	@Override
+	public String toString() {
+		return "Preference: bathrooms = " + bathrooms + "\n" + "bedrooms = " + bedrooms + "\n";
+	}
+	
+	
 }
