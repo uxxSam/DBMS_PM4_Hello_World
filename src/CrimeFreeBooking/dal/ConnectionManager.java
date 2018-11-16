@@ -5,14 +5,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import javax.servlet.ServletException;
-
 public class ConnectionManager {
 
 	// User to connect to your database instance. By default, this is "root2".
 	private final String user = "root";
 	// Password for the user.
-	private final String password = "m2860321";
+
+	private final String password = "Sunshine1duke1";
+
 	// URI to your database server. If running on the same machine, then this is "localhost".
 	private final String hostName = "localhost";
 	// Port to your database server. By default, this is 3307.
