@@ -64,7 +64,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<td>
                 		<a href="CreateWishList?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Add to Wishlist</button></a>
                 		<a href="CreateRecommendation?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Recommend</button></a>
-                		
+                		<button>Safety Analysis</button>
+                		<button>Review Listing</button>
                 	</td>
 					<td><c:out value="${listing.getTitle()}" /></td>
 					<td><c:out value="${listing.getPrice()}" /></td>
@@ -124,7 +125,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<td>
                 		<a href="CreateWishList?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Add to Wishlist</button></a>
                 		<a href="CreateRecommendation?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Recommend</button></a>
-                		
+                		<button>Safety Analysis</button>
+                		<button>Review Listing</button>
                 	</td>
 					<td><c:out value="${listingByBB.getTitle()}" /></td>
 					<td><c:out value="${listingByBB.getPrice()}" /></td>
@@ -166,7 +168,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <br>
     <br>
     
-        <font size="10" color="#000" >My Recommendations</font>
+    <font size="10" color="#000" >My Recommendations</font>
     <hr>
     <%
     List<Recommendations> myRecommendation = RecommendationsDao.getInstance().getRecommendationsByUser(requestedUser);
@@ -184,6 +186,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <br>
     
+    <font size="10" color="#000" >My Reviews</font>
+    <hr>
+    Feature under development
+    <br>
+    
     <font size="10" color="#000" >My Preference</font>
     <hr>
     <%
@@ -197,7 +204,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	}
     	// System.out.println(myPreference.get(0).getPreferenceId());
     	out.println("<a href=\"/DBMS_PM4_Hello_World/DeletePreference?id=" + myPreference.get(0).getPreferenceId() + "\"><input type=\"button\" name=\"\" value=\"Delete Preference\"></a>");
-    }
+    	out.println("<button>Smart Generate Recommendations</button>");
+   	}
     %>
     
   </body>
