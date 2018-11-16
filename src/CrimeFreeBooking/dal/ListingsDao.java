@@ -201,35 +201,7 @@ public class ListingsDao {
 			selectStmt.setInt(1, hostProfile.getHostId());
 			results = selectStmt.executeQuery();
 			HostProfilesDao hostProfilesDao = HostProfilesDao.getInstance();
-			while(results.next()) {
-				int listingId = results.getInt("ListingId");
-				int hostId = results.getInt("HostId");
-				String url = results.getString("URL");
-				String title = results.getString("Title");
-				int price = results.getInt("Price");
-				String description = results.getString("Description");
-				String imageURL = results.getString("ImageURL");
-				String street1 = results.getString("Street1");
-				String street2 = results.getString("Street2");
-				String city = results.getString("City");
-				String state = results.getString("State");
-				String zipCode = results.getString("ZipCode");
-				double latitude = results.getDouble("Latitude");
-				double longitude = results.getDouble("Longitude");
-				String propertyType = results.getString("PropertyType");
-				String roomType = results.getString("RoomType");
-				int accomodates = results.getInt("Accomodates");
-				int bathrooms = results.getInt("Bathrooms");
-				int bedrooms = results.getInt("Bedrooms");
-				int beds = results.getInt("Beds");
-				
-				HostProfiles resultHostProfile = hostProfilesDao.getHostProfileById(hostId);
-				Listings listing = new Listings(listingId,resultHostProfile,url,title,
-						price,description,imageURL,street1,street2,city,state,zipCode,
-						latitude,longitude,propertyType,roomType,accomodates,bathrooms,
-						bedrooms,beds);
-				listings.add(listing);
-			}
+			getListing(listings, results, hostProfilesDao);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw e;
@@ -246,4 +218,180 @@ public class ListingsDao {
 		}
 		return listings;
 	}
+
+	public List<Listings> getListingsBasedOnCoordinates(double latitude, double longitude) throws SQLException {
+		List<Listings> listings = new ArrayList<Listings>();
+		String selectListings =
+				"SELECT ListingId,HostId,URL,Title,Price,Description,ImageURL,Street1, " +
+						"Street2,City,State,ZipCode,Latitude,Longitude,PropertyType,RoomType, " +
+						"Accomodates,Bathrooms,Bedrooms,Beds " +
+						"FROM Listings " +
+						"WHERE Latitude=? AND Longitude=?;";
+		Connection connection = null;
+		PreparedStatement selectStmt = null;
+		ResultSet results = null;
+		try {
+			connection = connectionManager.getConnection();
+			selectStmt = connection.prepareStatement(selectListings);
+			selectStmt.setDouble(1, latitude);
+			selectStmt.setDouble(2, longitude);
+			results = selectStmt.executeQuery();
+			HostProfilesDao hostProfilesDao = HostProfilesDao.getInstance();
+			getListing(listings, results, hostProfilesDao);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(connection != null) {
+				connection.close();
+			}
+			if(selectStmt != null) {
+				selectStmt.close();
+			}
+			if(results != null) {
+				results.close();
+			}
+		}
+		return listings;
+	}
+
+	public List<Listings> getListingsBasedOnCity(String city) throws SQLException {
+		List<Listings> listings = new ArrayList<Listings>();
+		String selectListings =
+				"SELECT ListingId,HostId,URL,Title,Price,Description,ImageURL,Street1, " +
+						"Street2,City,State,ZipCode,Latitude,Longitude,PropertyType,RoomType, " +
+						"Accomodates,Bathrooms,Bedrooms,Beds " +
+						"FROM Listings " +
+						"WHERE City=?;";
+		Connection connection = null;
+		PreparedStatement selectStmt = null;
+		ResultSet results = null;
+		try {
+			connection = connectionManager.getConnection();
+			selectStmt = connection.prepareStatement(selectListings);
+			selectStmt.setString(1, city);
+			results = selectStmt.executeQuery();
+			HostProfilesDao hostProfilesDao = HostProfilesDao.getInstance();
+			getListing(listings, results, hostProfilesDao);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(connection != null) {
+				connection.close();
+			}
+			if(selectStmt != null) {
+				selectStmt.close();
+			}
+			if(results != null) {
+				results.close();
+			}
+		}
+		return listings;
+	}
+
+	public List<Listings> getListingsBasedOnBedsAndBaths(int bedrooms, int bathrooms) throws SQLException {
+		List<Listings> listings = new ArrayList<Listings>();
+		String selectListings =
+				"SELECT ListingId,HostId,URL,Title,Price,Description,ImageURL,Street1, " +
+						"Street2,City,State,ZipCode,Latitude,Longitude,PropertyType,RoomType, " +
+						"Accomodates,Bathrooms,Bedrooms,Beds " +
+						"FROM Listings " +
+						"WHERE Bedrooms=? AND Bathrooms=?;";
+		Connection connection = null;
+		PreparedStatement selectStmt = null;
+		ResultSet results = null;
+		try {
+			connection = connectionManager.getConnection();
+			selectStmt = connection.prepareStatement(selectListings);
+			selectStmt.setInt(1, bedrooms);
+			selectStmt.setInt(2, bathrooms);
+			results = selectStmt.executeQuery();
+			HostProfilesDao hostProfilesDao = HostProfilesDao.getInstance();
+			getListing(listings, results, hostProfilesDao);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(connection != null) {
+				connection.close();
+			}
+			if(selectStmt != null) {
+				selectStmt.close();
+			}
+			if(results != null) {
+				results.close();
+			}
+		}
+		return listings;
+	}
+
+	public List<Listings> getListingsForPrice(int price) throws SQLException {
+		List<Listings> listings = new ArrayList<Listings>();
+		String selectListings =
+				"SELECT ListingId,HostId,URL,Title,Price,Description,ImageURL,Street1, " +
+						"Street2,City,State,ZipCode,Latitude,Longitude,PropertyType,RoomType, " +
+						"Accomodates,Bathrooms,Bedrooms,Beds " +
+						"FROM Listings " +
+						"WHERE Price=?;";
+		Connection connection = null;
+		PreparedStatement selectStmt = null;
+		ResultSet results = null;
+		try {
+			connection = connectionManager.getConnection();
+			selectStmt = connection.prepareStatement(selectListings);
+			selectStmt.setInt(1, price);
+			results = selectStmt.executeQuery();
+			HostProfilesDao hostProfilesDao = HostProfilesDao.getInstance();
+			getListing(listings, results, hostProfilesDao);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(connection != null) {
+				connection.close();
+			}
+			if(selectStmt != null) {
+				selectStmt.close();
+			}
+			if(results != null) {
+				results.close();
+			}
+		}
+		return listings;
+	}
+
+	private void getListing(List<Listings> listings, ResultSet results,
+			HostProfilesDao hostProfilesDao) throws SQLException {
+		while(results.next()) {
+			int listingId = results.getInt("ListingId");
+			int hostId = results.getInt("HostId");
+			String url = results.getString("URL");
+			String title = results.getString("Title");
+			int price = results.getInt("Price");
+			String description = results.getString("Description");
+			String imageURL = results.getString("ImageURL");
+			String street1 = results.getString("Street1");
+			String street2 = results.getString("Street2");
+			String resultCity = results.getString("City");
+			String state = results.getString("State");
+			String zipCode = results.getString("ZipCode");
+			double resultLatitude = results.getDouble("Latitude");
+			double resultLongitude = results.getDouble("Longitude");
+			String propertyType = results.getString("PropertyType");
+			String roomType = results.getString("RoomType");
+			int accomodates = results.getInt("Accomodates");
+			int bathrooms = results.getInt("Bathrooms");
+			int bedrooms = results.getInt("Bedrooms");
+			int beds = results.getInt("Beds");
+
+			HostProfiles resultHostProfile = hostProfilesDao.getHostProfileById(hostId);
+			Listings listing = new Listings(listingId,resultHostProfile,url,title,
+					price,description,imageURL,street1,street2,resultCity,state,zipCode,
+					resultLatitude,resultLongitude,propertyType,roomType,accomodates,bathrooms,
+					bedrooms,beds);
+			listings.add(listing);
+		}
+	}
+
 }
