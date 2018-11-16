@@ -333,7 +333,7 @@ public class ListingsDao {
 						"Street2,City,State,ZipCode,Latitude,Longitude,PropertyType,RoomType, " +
 						"Accomodates,Bathrooms,Bedrooms,Beds " +
 						"FROM Listings " +
-						"WHERE Price=?;";
+						"WHERE Price <=? ORDER BY Price DESC LIMIT 50;";
 		Connection connection = null;
 		PreparedStatement selectStmt = null;
 		ResultSet results = null;
