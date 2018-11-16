@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      out.println("Welcome:" + name);
     %><br>
     <a href="login.jsp">Log out</a>
+    </center>
     
     <br>
     <font size="10" color="#000" >My WishList</font>
@@ -36,6 +37,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	}
     }
     %>
-    </center>
+    
+    <br>
+    <br>
+    <br>
+    
+    <font size="10" color="#000" >My Preference</font>
+    <%
+    List<Preferences> myPreference = PreferencesDao.getInstance().getPreferenceOfUser(requestedUser);
+    
+    if (myPreference.isEmpty()) {
+    	out.println("<br>Empty preference" + "<a href=\"/DBMS_PM4_Hello_World/create-preference?username=" + name + "\"><input type=\"button\" name=\"\" value=\"Create Preference\"></a>");
+    } else {
+    	for (Preferences pref : myPreference) {
+    		out.println("<br>" + pref.toString());
+    	}
+    	System.out.println(myPreference.get(0).getPreferenceId());
+    	out.println("<a href=\"/DBMS_PM4_Hello_World/DeletePreference?id=" + myPreference.get(0).getPreferenceId() + "\"><input type=\"button\" name=\"\" value=\"Delete Preference\"></a>");
+    }
+    %>
   </body>
 </html>

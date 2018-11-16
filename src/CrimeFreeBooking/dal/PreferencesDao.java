@@ -18,13 +18,13 @@ public class PreferencesDao {
 
   protected ConnectionManager connectionManager;
 
-  private static RecommendationsDao instance = null;
+  private static PreferencesDao instance = null;
   protected PreferencesDao () {
     connectionManager = new ConnectionManager();
   }
-  public static RecommendationsDao getInstance() {
+  public static PreferencesDao getInstance() {
     if(instance == null) {
-      instance = new RecommendationsDao();
+      instance = new PreferencesDao();
     }
     return instance;
   }
@@ -40,7 +40,7 @@ public class PreferencesDao {
       connection = connectionManager.getConnection();
       insertStmt = connection.prepareStatement(insertPreferences,
           Statement.RETURN_GENERATED_KEYS);
-      insertStmt.setString(1, preferences.getUser().getUserName());
+      insertStmt.setString(1, preferences.getUser());
       insertStmt.setInt(2, preferences.getBathrooms());
       insertStmt.setInt(3, preferences.getBedrooms());
       insertStmt.executeUpdate();
@@ -144,7 +144,7 @@ public class PreferencesDao {
         int bedrooms = results.getInt("Bedrooms");
 
         Users user = usersDao.getUserByUserName(userName);
-        Preferences preferences = new Preferences(resultPreferenceId, user, bathrooms,bedrooms);
+        Preferences preferences = new Preferences(resultPreferenceId, user.getUserName(), bathrooms,bedrooms);
         return preferences;
       }
     } catch (SQLException e) {
@@ -188,7 +188,7 @@ public class PreferencesDao {
         int bedrooms = results.getInt("Bedrooms");
 
         Users resultUser = usersDao.getUserByUserName(userName);
-        Preferences preferences = new Preferences(resultPreferenceId, resultUser, bathrooms,bedrooms);
+        Preferences preferences = new Preferences(resultPreferenceId, resultUser.getUserName(), bathrooms,bedrooms);
         preferencesList.add(preferences);
       }
     } catch (SQLException e) {

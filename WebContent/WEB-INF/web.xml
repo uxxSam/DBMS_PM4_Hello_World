@@ -22,4 +22,18 @@
     <servlet-name>CreateUser</servlet-name>
     <url-pattern>/create-user</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>CreatePreference</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.CreatePreference</servlet-class>
+    <jsp-file>/CreatePreference.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreatePreference</servlet-name>
+    <url-pattern>/create-preference</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>DeletePreference</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.DeletePreference</servlet-class>
+  	</servlet>
 </web-app>
