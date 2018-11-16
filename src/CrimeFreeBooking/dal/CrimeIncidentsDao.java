@@ -120,7 +120,7 @@ public class CrimeIncidentsDao {
 
 	public CrimeIncidents getCrimeIncidentById(int crimeId) throws SQLException {
 		String selectCrimeIncident =
-			"SELECT CrimeIncidents(CrimeId,Latitude,Longitude,CrimeDate,CrimeType) " +
+			"SELECT CrimeId,Latitude,Longitude,CrimeDate,CrimeType " +
 			"FROM CrimeIncidents " +
 			"WHERE CrimeId=?;";
 		Connection connection = null;
@@ -162,7 +162,7 @@ public class CrimeIncidentsDao {
 	public List<CrimeIncidents> getCrimeIncidentsForCrimeType(String crimeType) throws SQLException {
 		List<CrimeIncidents> crimeIncidents = new ArrayList<CrimeIncidents>();
 		String selectCrimeIncidents =
-			"SELECT CrimeIncidents(CrimeId,Latitude,Longitude,CrimeDate,CrimeType) " +
+			"SELECT CrimeId,Latitude,Longitude,CrimeDate,CrimeType " +
 			"FROM CrimeIncidents " +
 			"WHERE CrimeType=?;";
 		Connection connection = null;
