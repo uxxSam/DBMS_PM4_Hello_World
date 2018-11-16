@@ -2,10 +2,10 @@ package CrimeFreeBooking.model;
 
 public class Recommendations {
 	protected int recommendationId;
-	protected Users user;
-	protected Listings listing;
+	protected String user;
+	protected int listing;
 	
-	public Recommendations(int recommendationId, Users user, Listings listing) {
+	public Recommendations(int recommendationId, String user, int listing) {
 		this.recommendationId = recommendationId;
 		this.user = user;
 		this.listing = listing;
@@ -15,7 +15,7 @@ public class Recommendations {
 		this.recommendationId = recommendationId;
 	}
 
-	public Recommendations(Users user, Listings listing) {
+	public Recommendations(String user, int listing) {
 		this.user = user;
 		this.listing = listing;
 	}
@@ -28,19 +28,19 @@ public class Recommendations {
 		this.recommendationId = recommendationId;
 	}
 
-	public Users getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
-	public Listings getListing() {
+	public int getListing() {
 		return listing;
 	}
 
-	public void setListing(Listings listing) {
+	public void setListing(int listing) {
 		this.listing = listing;
 	}
 }

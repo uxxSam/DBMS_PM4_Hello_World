@@ -36,8 +36,8 @@ public class WishlistsDao {
 			connection = connectionManager.getConnection();
 			insertStmt = connection.prepareStatement(insertWishlist,
 					Statement.RETURN_GENERATED_KEYS);
-			insertStmt.setString(1, wishlist.getUser().getUserName());
-			insertStmt.setInt(2, wishlist.getListing().getListingId());
+			insertStmt.setString(1, wishlist.getUser());
+			insertStmt.setInt(2, wishlist.getListing());
 			insertStmt.executeUpdate();
 			
 			resultKey = insertStmt.getGeneratedKeys();
@@ -112,7 +112,7 @@ public class WishlistsDao {
 				
 				Users user = usersDao.getUserByUserName(userName);
 				Listings listing = listingsDao.getListingById(listingId);
-				Wishlists wishlist = new Wishlists(resultWishlistId, user, listing);
+				Wishlists wishlist = new Wishlists(resultWishlistId, user.getUserName(), listing.getListingId());
 				return wishlist;
 			}
 		} catch (SQLException e) {
@@ -156,7 +156,7 @@ public class WishlistsDao {
 				
 				Users resultUser = usersDao.getUserByUserName(userName);
 				Listings listing = listingsDao.getListingById(listingId);
-				Wishlists wishlist = new Wishlists(wishlistId, resultUser, listing);
+				Wishlists wishlist = new Wishlists(wishlistId, resultUser.getUserName(), listing.getListingId());
 				wishlists.add(wishlist);
 			}
 		} catch (SQLException e) {

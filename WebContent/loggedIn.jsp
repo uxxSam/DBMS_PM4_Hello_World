@@ -31,7 +31,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <form action="FindListingByPrice" method="get">
         UserName:   	
       	<%  
-		    String username = request.getParameter("username");
       		out.println("<input name=\"username\" type=\"text\" value=\"" + name + "\"");
 		%>
 		<br>
@@ -46,6 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <br>
         <table border="1">
             <tr>
+            	<th>Options</th>
                 <th>Title</th>
                 <th>Price</th>
                 <th>Street1</th>
@@ -57,10 +57,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <th>Room Type</th>
                 <th>Bathrooms</th>
                 <th>Bedrooms</th>
-                <th>Bedrooms</th>
+                <th>Beds</th>
             </tr>
             <c:forEach items="${listing}" var="listing" >
                 <tr>
+                	<td>
+                		<a href="CreateWishList?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Add to Wishlist</button></a>
+                		<a href="CreateRecommendation?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Recommend</button></a>
+                		
+                	</td>
 					<td><c:out value="${listing.getTitle()}" /></td>
 					<td><c:out value="${listing.getPrice()}" /></td>
 					<td><c:out value="${listing.getStreet1()}" /></td>
@@ -79,7 +84,69 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <br>
 
     <br>
+    
+    <font size="10" color="#000" >Find Listings by Bedroom and Bathroom Numbers</font>
+    <hr>
+      <form action="FindListingsByBB" method="get">
+        UserName:   	
+      	<%  
+      		out.println("<input name=\"username\" type=\"text\" value=\"" + name + "\"");
+		%>
+		<br>
+		<br>
+      	Minimum Bathroom Number ：<input type="text" name="bathroom"/><br>
+      	Minimum Bedroom Number ：<input type="text" name="bedroom"/><br>
+        <input type="submit" />
+      </form>
+      <br>
+      <c:forEach items="${messagesPriceByBB}" var="messagesPriceByBB" >
+     	 <span id="successMessage"><b>${messagesPriceByBB}</b></span>
+	  </c:forEach>
+      <br>
+        <table border="1">
+            <tr>
+            	<th>Options</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Street1</th>
+                <th>Street2</th>
+                <th>City</th>
+                <th>State</th>
+                <th>ZipCode</th>
+                <th>Property Type</th>
+                <th>Room Type</th>
+                <th>Bathrooms</th>
+                <th>Bedrooms</th>
+                <th>Bedrooms</th>
+            </tr>
+            <c:forEach items="${listingByBB}" var="listingByBB" >
+                <tr>
+                	<td>
+                		<a href="CreateWishList?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Add to Wishlist</button></a>
+                		<a href="CreateRecommendation?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Recommend</button></a>
+                		
+                	</td>
+					<td><c:out value="${listingByBB.getTitle()}" /></td>
+					<td><c:out value="${listingByBB.getPrice()}" /></td>
+					<td><c:out value="${listingByBB.getStreet1()}" /></td>
+					<td><c:out value="${listingByBB.getStreet2()}" /></td>
+					<td><c:out value="${listingByBB.getCity()}" /></td>
+					<td><c:out value="${listingByBB.getState()}" /></td>
+					<td><c:out value="${listingByBB.getZipCode()}" /></td>
+					<td><c:out value="${listingByBB.getPropertyType()}" /></td>
+					<td><c:out value="${listingByBB.getRoomType()}" /></td>
+					<td><c:out value="${listingByBB.getBathrooms()}" /></td>
+					<td><c:out value="${listingByBB.getBedrooms()}" /></td>
+					<td><c:out value="${listingByBB.getBeds()}" /></td>
+                </tr>
+            </c:forEach>
+       </table>
+      <br>
+
+    <br>
+    
     <font size="10" color="#000" >My WishList</font>
+    <hr>
     <%
     Users requestedUser = UsersDao.getInstance().getUserByUserName(name);
     List<Wishlists> myWishList = WishlistsDao.getInstance().getWishlistsForUser(requestedUser);
@@ -87,8 +154,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     if (myWishList.isEmpty()) {
     	out.println("<br>Empty wishlist");
     } else {
-    	for (Wishlists wish : myWishList) {
+    	for (int i = 0; i < myWishList.size(); i++) {
+    		Wishlists wish = myWishList.get(i);
     		out.println("<br>" + wish.toString());
+    		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteWishlist?id=" + myWishList.get(i).getWishlistId() + "\"><input type=\"button\" name=\"\" value=\"Delete Wish\"></a>");
     	}
     }
     %>
@@ -97,7 +166,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <br>
     <br>
     
+        <font size="10" color="#000" >My Recommendations</font>
+    <hr>
+    <%
+    List<Recommendations> myRecommendation = RecommendationsDao.getInstance().getRecommendationsByUser(requestedUser);
+    
+    if (myRecommendation.isEmpty()) {
+    	out.println("<br>Empty recommendation");
+    } else {
+    	for (int i = 0; i < myRecommendation.size(); i++) {
+    		Recommendations rec = myRecommendation.get(i);
+    		out.println("<br>" + rec.toString());
+    		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteRecommendation?id=" + myRecommendation.get(i).getRecommendationId() + "\"><input type=\"button\" name=\"\" value=\"Delete Recommendation\"></a>");
+    	}
+    }
+    %>
+    
+    <br>
+    
     <font size="10" color="#000" >My Preference</font>
+    <hr>
     <%
     List<Preferences> myPreference = PreferencesDao.getInstance().getPreferenceOfUser(requestedUser);
     
@@ -107,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	for (Preferences pref : myPreference) {
     		out.println("<br>" + pref.toString());
     	}
-    	System.out.println(myPreference.get(0).getPreferenceId());
+    	// System.out.println(myPreference.get(0).getPreferenceId());
     	out.println("<a href=\"/DBMS_PM4_Hello_World/DeletePreference?id=" + myPreference.get(0).getPreferenceId() + "\"><input type=\"button\" name=\"\" value=\"Delete Preference\"></a>");
     }
     %>

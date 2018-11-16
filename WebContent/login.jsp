@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     String flag = request.getParameter("errNo");  
     try{
          if(flag!=null)
-            out.println("Wrong Username password combiantion!");
+            out.println("<br>Wrong Username password combiantion!\n");
     }catch(Exception e){
         e.printStackTrace();
     }

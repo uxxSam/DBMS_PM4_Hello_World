@@ -35,8 +35,28 @@
     <servlet-name>DeletePreference</servlet-name>
     <servlet-class>CrimeFreeBooking.servlet.DeletePreference</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <servlet-name>FindListingByPrice</servlet-name>
     <servlet-class>CrimeFreeBooking.servlet.FindListingByPrice</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>FindListingsByBB</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.FindListingsByBB</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CreateWishList</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.CreateWishList</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CreateRecommendation</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.CreateRecommendation</servlet-class>
+  </servlet>
+    <servlet>
+    <servlet-name>DeleteRecommendation</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.DeleteRecommendation</servlet-class>
+  </servlet> 
+   <servlet>
+    <servlet-name>DeleteWishlist</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.DeleteWishlist</servlet-class>
+  </servlet> 
 </web-app>

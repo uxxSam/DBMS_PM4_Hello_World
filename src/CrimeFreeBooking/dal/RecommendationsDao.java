@@ -40,8 +40,8 @@ public class RecommendationsDao {
       connection = connectionManager.getConnection();
       insertStmt = connection.prepareStatement(insertRecommendation,
           Statement.RETURN_GENERATED_KEYS);
-      insertStmt.setString(1, recommendations.getUser().getUserName());
-      insertStmt.setInt(2, recommendations.getListing().getListingId());
+      insertStmt.setString(1, recommendations.getUser());
+      insertStmt.setInt(2, recommendations.getListing());
       insertStmt.executeUpdate();
 
       resultKey = insertStmt.getGeneratedKeys();
@@ -80,7 +80,7 @@ public class RecommendationsDao {
       updateStmt.setInt(2, recommendations.getRecommendationId());
       updateStmt.executeUpdate();
 
-      recommendations.setListing(listing);
+      recommendations.setListing(listing.getListingId());
       return recommendations;
     } catch (SQLException e) {
       e.printStackTrace();
@@ -141,7 +141,7 @@ public class RecommendationsDao {
 
         Users user = usersDao.getUserByUserName(userName);
         Listings listing = listingsDao.getListingById(listingId);
-        Recommendations recommendations = new Recommendations(resultRecommendationId, user, listing);
+        Recommendations recommendations = new Recommendations(resultRecommendationId, user.getUserName(), listing.getListingId());
         return recommendations;
       }
     } catch (SQLException e) {
@@ -352,7 +352,7 @@ public class RecommendationsDao {
 
       Users resultUser = usersDao.getUserByUserName(userName);
       Listings listing = listingsDao.getListingById(listingId);
-      Recommendations recommendations = new Recommendations(resultRecommendationId,resultUser, listing);
+      Recommendations recommendations = new Recommendations(resultRecommendationId,resultUser.getUserName(), listing.getListingId());
       recommendationList.add(recommendations);
     }
   }

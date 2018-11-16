@@ -2,10 +2,10 @@ package CrimeFreeBooking.model;
 
 public class Wishlists {
 	protected int wishlistId;
-	protected Users user;
-	protected Listings listing;
+	protected String user;
+	protected int listing;
 	
-	public Wishlists(int wishlistId, Users user, Listings listing) {
+	public Wishlists(int wishlistId, String user, int listing) {
 		this.wishlistId = wishlistId;
 		this.user = user;
 		this.listing = listing;
@@ -15,7 +15,7 @@ public class Wishlists {
 		this.wishlistId = wishlistId;
 	}
 
-	public Wishlists(Users user, Listings listing) {
+	public Wishlists(String user, int listing) {
 		this.user = user;
 		this.listing = listing;
 	}
@@ -28,25 +28,25 @@ public class Wishlists {
 		this.wishlistId = wishlistId;
 	}
 
-	public Users getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(Users user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
-	public Listings getListing() {
+	public int getListing() {
 		return listing;
 	}
 
-	public void setListing(Listings listing) {
+	public void setListing(int listing) {
 		this.listing = listing;
 	}
 	
 	@Override
 	public String toString() {
 		return "wishlistId: " + this.wishlistId + "\n"
-				+ this.listing.toString() + "\n";
+				+ this.listing + "\n";
 	}
 }
