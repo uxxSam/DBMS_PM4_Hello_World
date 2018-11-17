@@ -8,32 +8,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
 <title>Crime Free Booking</title>
 </head>
 <body>
-     <h3>Lookup Users by User Name</h3>
+    <style>
+	body {
+    		background-color: #ccebff;
+	}
+  	<div class="jumbotron">
+  	</style>
+    <font size="5" color="#341D8F" ><strong>Lookup Users by User Name</strong></font>
+    <br>
+    <img width="150" height="150" src="https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1.png" class="attachment-cb-full-full size-cb-full-full wp-post-image" alt="" srcset="https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1.png 1792w, https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1-150x150.png 150w, https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1-400x400.png 400w, https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1-768x768.png 768w, https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1-125x125.png 125w" sizes="(max-width: 1792px) 100vw, 1792px">
+    <br>
       <hr>
       <form action="FindUsers" method="get">
-      	UserName ：<input type="text" name="username"/><br>
-        <input type="submit" />
+      	<span class="label label-primary">UserName</span> ：<input type="text" name="username"/>
+        &emsp;
+        <input type="submit" class="btn btn-sm btn-danger"/>
       </form>
       <br>
       <c:forEach items="${messages}" var="messages" >
      	 <span id="successMessage"><b>${messages}</b></span>
 	  </c:forEach>
-      <br>
         <table border="1">
             <tr>
-                <th>UserName</th>
-                <th>Password</th>
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>Street1</th>
-                <th>Street2</th>
-                <th>City</th>
-                <th>State</th>
-                <th>ZipCode</th>
-                <th>Country</th>
+                <th> <span class="label label-default">UserName</span> </th>
+                <th> <span class="label label-default">Password</span> </th>
+                <th> <span class="label label-primary">FirstName</span> </th>
+                <th> <span class="label label-primary">LastName</span> </th>
+                <th> <span class="label label-success">Street1</span> </th>
+                <th> <span class="label label-success">Street2</span> </th>
+                <th> <span class="label label-info">City</span> </th>
+                <th> <span class="label label-info">State</span> </th>
+                <th> <span class="label label-info">ZipCode</span> </th>
+                <th> <span class="label label-warning">Country</span> </th>
             </tr>
             <c:forEach items="${user}" var="user" >
                 <tr>
@@ -51,5 +64,12 @@
             </c:forEach>
        </table>
       <br>
+      
+    <!-- Bootstrap -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
 </body>
 </html>
