@@ -62,10 +62,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <c:forEach items="${listing}" var="listing" >
                 <tr>
                 	<td>
-                		<a href="CreateWishList?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Add to Wishlist</button></a>
-                		<a href="CreateRecommendation?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Recommend</button></a>
+                		<a href="CreateWishList?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listing.getListingId()}"/>"><button>Add to Wishlist</button></a>
+                		<a href="CreateRecommendation?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listing.getListingId()}"/>"><button>Recommend</button></a>
                 		<button>Safety Analysis</button>
-                		<button>Review Listing</button>
+                		<a href="create-review?username=<c:out value="${param.username}"/>&listingid=<c:out value="${listing.getListingId()}"/>"><button>Review Listing</button></a>
                 	</td>
 					<td><c:out value="${listing.getTitle()}" /></td>
 					<td><c:out value="${listing.getPrice()}" /></td>
@@ -126,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		<a href="CreateWishList?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Add to Wishlist</button></a>
                 		<a href="CreateRecommendation?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Recommend</button></a>
                 		<button>Safety Analysis</button>
-                		<button>Review Listing</button>
+                		<a href="create-review?username=<c:out value="${param.username}"/>&listingid=<c:out value="${listingByBB.getListingId()}"/>"><button>Review Listing</button></a>
                 	</td>
 					<td><c:out value="${listingByBB.getTitle()}" /></td>
 					<td><c:out value="${listingByBB.getPrice()}" /></td>
@@ -159,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	for (int i = 0; i < myWishList.size(); i++) {
     		Wishlists wish = myWishList.get(i);
     		out.println("<br>" + wish.toString());
-    		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteWishlist?id=" + myWishList.get(i).getWishlistId() + "\"><input type=\"button\" name=\"\" value=\"Delete Wish\"></a>");
+    		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteWishlist?id=" + myWishList.get(i).getWishlistId() + "\"><input type=\"button\" name=\"\" value=\"Delete Wish\"></a><br>");
     	}
     }
     %>
@@ -179,7 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	for (int i = 0; i < myRecommendation.size(); i++) {
     		Recommendations rec = myRecommendation.get(i);
     		out.println("<br>" + rec.toString());
-    		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteRecommendation?id=" + myRecommendation.get(i).getRecommendationId() + "\"><input type=\"button\" name=\"\" value=\"Delete Recommendation\"></a>");
+    		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteRecommendation?id=" + myRecommendation.get(i).getRecommendationId() + "\"><input type=\"button\" name=\"\" value=\"Delete Recommendation\"></a><br>");
     	}
     }
     %>
@@ -188,7 +188,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <font size="10" color="#000" >My Reviews</font>
     <hr>
-    Feature under development
+       
+    <%
+    List<Reviews> myReviews = ReviewsDao.getInstance().getReviewByUserName(name);
+
+    if (myReviews.isEmpty()) {
+    	out.println("<br>No Reviews");
+    } else {
+    	for (int i = 0; i < myReviews.size(); i++) {
+    		Reviews review = myReviews.get(i);
+    		out.println("<br>" + review.toString());
+    		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteReview?id=" + myReviews.get(i).getReviewId() + "\"><input type=\"button\" name=\"\" value=\"Delete Review\"></a><br>");
+    	}
+   	}
+    %>
+       
     <br>
     
     <font size="10" color="#000" >My Preference</font>

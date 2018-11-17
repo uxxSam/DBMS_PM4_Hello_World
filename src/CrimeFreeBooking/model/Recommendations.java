@@ -1,5 +1,9 @@
 package CrimeFreeBooking.model;
 
+import java.sql.SQLException;
+
+import CrimeFreeBooking.dal.ListingsDao;
+
 public class Recommendations {
 	protected int recommendationId;
 	protected String user;
@@ -43,4 +47,19 @@ public class Recommendations {
 	public void setListing(int listing) {
 		this.listing = listing;
 	}
+
+	@Override
+	public String toString() {
+		try {
+			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
+			return "Recommended Listing Name: " + listing.getTitle() + "<br>" +
+					"Recommended Listing Description: " + listing.getDescription() + "<br>";
+		} catch (SQLException e) {
+			
+		}
+		
+		return "";
+	}
+	
+	
 }

@@ -1,5 +1,11 @@
 package CrimeFreeBooking.model;
 
+import java.sql.SQLException;
+import java.util.List;
+
+import CrimeFreeBooking.dal.ListingsDao;
+import CrimeFreeBooking.model.Listings;
+
 public class Wishlists {
 	protected int wishlistId;
 	protected String user;
@@ -46,7 +52,14 @@ public class Wishlists {
 	
 	@Override
 	public String toString() {
-		return "wishlistId: " + this.wishlistId + "\n"
-				+ this.listing + "\n";
+		try {
+			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
+			return "Wish Listing Name: " + listing.getTitle() + "<br>" +
+					"Wish Listing Description: " + listing.getDescription() + "<br>";
+		} catch (SQLException e) {
+			
+		}
+		
+		return "";
 	}
 }

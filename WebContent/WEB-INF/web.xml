@@ -51,12 +51,29 @@
     <servlet-name>CreateRecommendation</servlet-name>
     <servlet-class>CrimeFreeBooking.servlet.CreateRecommendation</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <servlet-name>DeleteRecommendation</servlet-name>
     <servlet-class>CrimeFreeBooking.servlet.DeleteRecommendation</servlet-class>
-  </servlet> 
-   <servlet>
+  </servlet>
+  <servlet>
     <servlet-name>DeleteWishlist</servlet-name>
     <servlet-class>CrimeFreeBooking.servlet.DeleteWishlist</servlet-class>
-  </servlet> 
+  </servlet>
+  <servlet>
+    <servlet-name>FindReviewsByUser</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.FindReviewsByUser</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteReview</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.DeleteReview</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CreateReview</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.CreateReview</servlet-class>
+    <jsp-file>/CreateReview.jsp</jsp-file>
+  </servlet>
+    <servlet-mapping>
+    <servlet-name>CreateReview</servlet-name>
+    <url-pattern>/create-review</url-pattern>
+  </servlet-mapping>
 </web-app>

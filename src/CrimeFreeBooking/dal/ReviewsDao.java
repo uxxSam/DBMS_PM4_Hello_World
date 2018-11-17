@@ -27,7 +27,7 @@ public class ReviewsDao {
 	
 	public Reviews create(Reviews review) throws SQLException {
 		String insertReview =
-			"INSERT INTO Reviews(ListingId,Date,ReviewerName,Content) " +
+			"INSERT INTO Reviews(ListingId,ReviewDate,ReviewerName,Content) " +
 			"VALUES(?,?,?,?);";
 		Connection connection = null;
 		PreparedStatement insertStmt = null;
@@ -36,7 +36,7 @@ public class ReviewsDao {
 			connection = connectionManager.getConnection();
 			insertStmt = connection.prepareStatement(insertReview,
 					Statement.RETURN_GENERATED_KEYS);
-			insertStmt.setInt(1, review.getListing().getListingId());
+			insertStmt.setInt(1, review.getListing());
 			insertStmt.setDate(2, (java.sql.Date) review.getReviewDate());
 			insertStmt.setString(3, review.getReviewerName());
 			insertStmt.setString(4, review.getContent());
@@ -119,7 +119,7 @@ public class ReviewsDao {
 
 	public Reviews getReviewById(int reviewId) throws SQLException {
 		String selectReview =
-			"SELECT ReviewId,ListingId,Date,ReviewerName,Content " +
+			"SELECT ReviewId,ListingId,ReviewDate,ReviewerName,Content " +
 			"FROM Reviews " +
 			"WHERE ReviewId=?;";
 		Connection connection = null;
@@ -135,12 +135,12 @@ public class ReviewsDao {
 			if(results.next()) {
 				int resultReviewId = results.getInt("ReviewId");
 				int listingId = results.getInt("ListingId");
-				Date date = results.getDate("Date");
+				Date date = results.getDate("ReviewDate");
 				String reviewerName = results.getString("ReviewerName");
 				String content = results.getString("Content");
 				
 				Listings listing = listingsDao.getListingById(listingId);
-				Reviews review = new Reviews(resultReviewId, listing, date, reviewerName, content);
+				Reviews review = new Reviews(resultReviewId, listing.getListingId(), date, reviewerName, content);
 				return review;
 			}
 		} catch (SQLException e) {
@@ -158,6 +158,50 @@ public class ReviewsDao {
 			}
 		}
 		return null;
+	}
+	
+	public List<Reviews> getReviewByUserName(String username) throws SQLException {
+		String selectReview =
+			"SELECT ReviewId,ListingId,ReviewDate,ReviewerName,Content " +
+			"FROM Reviews " +
+			"WHERE ReviewerName=?;";
+		Connection connection = null;
+		PreparedStatement selectStmt = null;
+		ResultSet results = null;
+		List<Reviews> reviews = new ArrayList<Reviews>();
+		try {
+			connection = connectionManager.getConnection();
+			selectStmt = connection.prepareStatement(selectReview);
+			selectStmt.setString(1, username);
+			results = selectStmt.executeQuery();
+			ListingsDao listingsDao = ListingsDao.getInstance();
+			
+			while (results.next()) {
+				int resultReviewId = results.getInt("ReviewId");
+				int listingId = results.getInt("ListingId");
+				Date date = results.getDate("ReviewDate");
+				String reviewerName = results.getString("ReviewerName");
+				String content = results.getString("Content");
+				
+				Listings listing = listingsDao.getListingById(listingId);
+				Reviews review = new Reviews(resultReviewId, listing.getListingId(), date, reviewerName, content);
+				reviews.add(review);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(connection != null) {
+				connection.close();
+			}
+			if(selectStmt != null) {
+				selectStmt.close();
+			}
+			if(results != null) {
+				results.close();
+			}
+		}
+		return reviews;
 	}
 	
 	public List<Reviews> getReviewsForListing(Listings listing) throws SQLException {
@@ -178,12 +222,12 @@ public class ReviewsDao {
 			while(results.next()) {
 				int reviewId = results.getInt("ReviewId");
 				int resultListingId = results.getInt("ListingId");
-				Date date = results.getDate("Date");
+				Date date = results.getDate("ReviewDate");
 				String reviewerName = results.getString("ReviewerName");
 				String content = results.getString("Content");
 				
 				Listings resultListing = listingsDao.getListingById(resultListingId);
-				Reviews review = new Reviews(reviewId, resultListing, date, reviewerName, content);
+				Reviews review = new Reviews(reviewId, resultListing.getListingId(), date, reviewerName, content);
 				reviews.add(review);
 			}
 		} catch (SQLException e) {

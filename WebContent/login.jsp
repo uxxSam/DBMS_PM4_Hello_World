@@ -62,8 +62,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		    <a href="/DBMS_PM4_Hello_World/find-user">
  		    <input type="button" name="findUser" value="Find User" class="btn btn-info">
  		    </a>
- 		    <input type="button" value="Back"
- 			  onclick="window.location.href('/webText')" class="btn btn-danger">
  	      </td>
  	    </tr>
  	  </table>
