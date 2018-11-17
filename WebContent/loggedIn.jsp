@@ -218,9 +218,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	}
     	// System.out.println(myPreference.get(0).getPreferenceId());
     	out.println("<a href=\"/DBMS_PM4_Hello_World/DeletePreference?id=" + myPreference.get(0).getPreferenceId() + "\"><input type=\"button\" name=\"\" value=\"Delete Preference\"></a>");
-    	out.println("<button>Smart Generate Recommendations</button>");
+    	
+    	out.println("<a href=\"/DBMS_PM4_Hello_World/GenerateRecommendation.jsp?bathroom=" + myPreference.get(0).getBathrooms() + "&bedroom=" + myPreference.get(0).getBedrooms() + "\"><input type=\"button\" name=\"\" value=\"Generate Smart Recommendations\"></a>");
+    	//System.out.println("<a href=\"/DBMS_PM4_Hello_World/GenerateRecommendation.jsp?bathroom=" + myPreference.get(0).getBathrooms() + "&bedroom=" + myPreference.get(0).getBedrooms() + "><button>Generate Smart Recommendations</button></a>");
+    	//out.println("<a href=\"/DBMS_PM4_Hello_World/GenerateRecommendation.jsp?bathroom=" + myPreference.get(0).getBathrooms() + "&bedroom=" + myPreference.get(0).getBedrooms() + "><button>Generate Smart Recommendations</button></a>");
    	}
     %>
-    
   </body>
 </html>
