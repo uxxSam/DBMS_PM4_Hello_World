@@ -70,7 +70,7 @@ public class PreferencesDao {
     }
   }
 
-  public Preferences updateRecommendation(Preferences preferences, int bedrooms, int bathrooms )throws SQLException {
+  public Preferences updatePreference(int preferences, int bedrooms, int bathrooms )throws SQLException {
     String updatePreferences = "UPDATE Preferences SET Bathrooms= ? , Bedrooms= ?  WHERE PreferenceId=?;";
     Connection connection = null;
     PreparedStatement updateStmt = null;
@@ -79,12 +79,12 @@ public class PreferencesDao {
       updateStmt = connection.prepareStatement(updatePreferences);
       updateStmt.setInt(1, bathrooms);
       updateStmt.setInt(2, bedrooms);
-      updateStmt.setInt(3, preferences.getPreferenceId());
+      updateStmt.setInt(3, preferences);
       updateStmt.executeUpdate();
-
-      preferences.setBathrooms(bathrooms);
-      preferences.setBedrooms(bedrooms);
-      return preferences;
+      Preferences pref = PreferencesDao.getInstance().getPreferenceById(preferences);
+      pref.setBathrooms(bathrooms);
+      pref.setBedrooms(bedrooms);
+      return pref;
     } catch (SQLException e) {
       e.printStackTrace();
     } finally {
@@ -98,14 +98,14 @@ public class PreferencesDao {
     return null;
   }
 
-  public Preferences delete(Preferences preferences) throws SQLException {
+  public Preferences delete(int preferences) throws SQLException {
     String deletePrefernce = "DELETE FROM Preferences WHERE PreferenceId=?;";
     Connection connection = null;
     PreparedStatement deleteStmt = null;
     try {
       connection = connectionManager.getConnection();
       deleteStmt = connection.prepareStatement(deletePrefernce);
-      deleteStmt.setInt(1, preferences.getPreferenceId());
+      deleteStmt.setInt(1, preferences);
       deleteStmt.executeUpdate();
 
       return null;

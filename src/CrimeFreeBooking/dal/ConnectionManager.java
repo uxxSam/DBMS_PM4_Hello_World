@@ -11,7 +11,7 @@ public class ConnectionManager {
 	private final String user = "root";
 	// Password for the user.
 
-	private final String password = "notmypassword";
+	private final String password = "notyourpassword";
 
 	// URI to your database server. If running on the same machine, then this is "localhost".
 	private final String hostName = "localhost";

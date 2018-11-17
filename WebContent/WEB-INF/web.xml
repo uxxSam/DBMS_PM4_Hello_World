@@ -72,8 +72,17 @@
     <servlet-class>CrimeFreeBooking.servlet.CreateReview</servlet-class>
     <jsp-file>/CreateReview.jsp</jsp-file>
   </servlet>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>CreateReview</servlet-name>
     <url-pattern>/create-review</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>UpdatePreference</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.UpdatePreference</servlet-class>
+    <jsp-file>/UpdatePreference.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdatePreference</servlet-name>
+    <url-pattern>/update-preference</url-pattern>
   </servlet-mapping>
 </web-app>
