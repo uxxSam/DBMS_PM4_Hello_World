@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListingsDao {
@@ -182,6 +183,98 @@ public class ListingsDao {
 			}
 		}
 		return null;
+	}
+	
+	public int getCrimeAroundListing(int listingId, int radius) throws SQLException {
+		String selectListing =
+			"SELECT COUNT(*) As count From CrimeIncidents Where (Latitude >= ? - (? * 0.00000898315) AND Longitude >= ? - ((? * 0.00000898315)  / COS(? * (3.14 / 180))) AND Latitude <= ? + (? * 0.00000898315) AND Longitude <= ? + ((? * 0.00000898315) / COS(? * (3.14 / 180))));";
+		Connection connection = null;
+		PreparedStatement selectStmt = null;
+		ResultSet results = null;
+		try {
+			connection = connectionManager.getConnection();
+			selectStmt = connection.prepareStatement(selectListing);
+			Listings listing = ListingsDao.getInstance().getListingById(listingId);
+			String latitude = String.valueOf(listing.getLatitude());
+			String longitude = String.valueOf(listing.getLongitude());
+			selectStmt.setString(1, latitude);
+			selectStmt.setInt(2, radius);
+			selectStmt.setString(3, longitude);
+			selectStmt.setInt(4, radius);
+			selectStmt.setString(5, longitude);
+			selectStmt.setString(6, latitude);
+			selectStmt.setInt(7, radius);
+			selectStmt.setString(8, longitude);
+			selectStmt.setInt(9, radius);
+			selectStmt.setString(10, longitude);
+			results = selectStmt.executeQuery();
+
+			if(results.next()) {
+				int count = results.getInt("count");
+				return count;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(connection != null) {
+				connection.close();
+			}
+			if(selectStmt != null) {
+				selectStmt.close();
+			}
+			if(results != null) {
+				results.close();
+			}
+		}
+		return -1;
+	}
+	
+	public List<List<String>> getMostFrequentCrimeAroundListing(int listingId, int radius) throws SQLException {
+		String selectListing =
+			"SELECT CrimeType, COUNT(*) AS count From CrimeIncidents Where (Latitude >= ? - (? * 0.00000898315) AND Longitude >= ? - ((? * 0.00000898315)  / COS(? * (3.14 / 180))) AND Latitude <= ? + (? * 0.00000898315) AND Longitude <= ? + ((? * 0.00000898315) / COS(? * (3.14 / 180)))) GROUP BY CrimeType ORDER BY count DESC LIMIT 3;";
+		Connection connection = null;
+		PreparedStatement selectStmt = null;
+		ResultSet results = null;
+		List<List<String>> res = new ArrayList<>();
+		try {
+			connection = connectionManager.getConnection();
+			selectStmt = connection.prepareStatement(selectListing);
+			Listings listing = ListingsDao.getInstance().getListingById(listingId);
+			String latitude = String.valueOf(listing.getLatitude());
+			String longitude = String.valueOf(listing.getLongitude());
+			selectStmt.setString(1, latitude);
+			selectStmt.setInt(2, radius);
+			selectStmt.setString(3, longitude);
+			selectStmt.setInt(4, radius);
+			selectStmt.setString(5, longitude);
+			selectStmt.setString(6, latitude);
+			selectStmt.setInt(7, radius);
+			selectStmt.setString(8, longitude);
+			selectStmt.setInt(9, radius);
+			selectStmt.setString(10, longitude);
+			results = selectStmt.executeQuery();
+
+			while(results.next()) {
+				String type = results.getString("CrimeType");
+				int count = results.getInt("count");
+				res.add(Arrays.asList(new String[] { type, String.valueOf(count) }));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if(connection != null) {
+				connection.close();
+			}
+			if(selectStmt != null) {
+				selectStmt.close();
+			}
+			if(results != null) {
+				results.close();
+			}
+		}
+		return res;
 	}
 	
 	public List<Listings> getListingsForHostProfile(HostProfiles hostProfile) throws SQLException {

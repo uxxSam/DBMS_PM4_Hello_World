@@ -85,4 +85,13 @@
     <servlet-name>UpdatePreference</servlet-name>
     <url-pattern>/update-preference</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>CreateAnalysis</servlet-name>
+    <servlet-class>CrimeFreeBooking.servlet.CreateAnalysis</servlet-class>
+    <jsp-file>/CreateAnalysis.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateAnalysis</servlet-name>
+    <url-pattern>/create-analysis</url-pattern>
+  </servlet-mapping>
 </web-app>
