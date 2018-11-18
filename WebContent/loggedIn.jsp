@@ -140,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 	<td>
                 		<a href="CreateWishList?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Add to Wishlist</button></a>
                 		<a href="CreateRecommendation?username=<c:out value="${param.username}"/>&listingId=<c:out value="${listingByBB.getListingId()}"/>"><button>Recommend</button></a>
-                		<button>Safety Analysis</button>
+                		<a href="create-analysis?username=<c:out value="${param.username}"/>&listingid=<c:out value="${listingByBB.getListingId()}"/>"><button>Safety Analysis</button></a>
                 		<a href="create-review?username=<c:out value="${param.username}"/>&listingid=<c:out value="${listingByBB.getListingId()}"/>"><button>Review Listing</button></a>
                 	</td>
 					<td><c:out value="${listingByBB.getTitle()}" /></td>
