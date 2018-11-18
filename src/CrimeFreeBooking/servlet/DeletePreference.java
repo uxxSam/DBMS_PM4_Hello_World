@@ -44,7 +44,7 @@ public class DeletePreference extends HttpServlet {
 		
 		try {
 			pref = PreferencesDao.getInstance().getPreferenceById(Integer.parseInt(id));
-			PreferencesDao.getInstance().delete(pref);
+			PreferencesDao.getInstance().delete(pref.getPreferenceId());
 		} catch (SQLException e) {
 			out.write("Failed to delete preference!");
 		}
