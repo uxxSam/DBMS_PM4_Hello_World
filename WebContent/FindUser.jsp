@@ -23,8 +23,7 @@
   	</style>
     <font size="5" color="#341D8F" ><strong>Lookup Users by User Name</strong></font>
     <br>
-    <img width="150" height="150" src="https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1.png" class="attachment-cb-full-full size-cb-full-full wp-post-image" alt="" srcset="https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1.png 1792w, https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1-150x150.png 150w, https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1-400x400.png 400w, https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1-768x768.png 768w, https://irishtechnews.ie/wp-content/uploads/2018/05/spy_logo-1-125x125.png 125w" sizes="(max-width: 1792px) 100vw, 1792px">
-    <br>
+	<img src="https://image.flaticon.com/icons/svg/126/126307.svg" width="150" height="150" alt="Binoculares icono gratis" title="Binoculares icono gratis">    <br>
       <hr>
       <form action="FindUsers" method="get">
       	<span class="label label-primary">UserName</span> ：<input type="text" name="username"/>

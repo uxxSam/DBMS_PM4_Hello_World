@@ -22,7 +22,7 @@ body {
   	  </style>
       <font size="5" color="#341D8F" ><strong>Create a New User</strong></font>
       <br>
-      <img height="150" src="https://3.bp.blogspot.com/-X8rDLLkHpMg/Vva0v8HLKjI/AAAAAAAAD-w/xxJYU2kJlFsj3SIZX_Jz3exPsIGoBQBEw/s320/criminal-wearing-eye-piece-and-striped-top_318-49576.jpg" width="150">
+      <img src="https://image.flaticon.com/icons/svg/72/72648.svg" width="150" height="150" alt="Nuevo usuario icono gratis" title="Nuevo usuario icono gratis">
       <hr>
       <form action="CreateUser" method="post">
       	<span class="label label-default">UserName</span> ：<input type="text" name="username"/>&emsp;

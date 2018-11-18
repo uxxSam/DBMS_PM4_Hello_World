@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
     
-    <title><strong>CrimeFreeBooking</strong></title>
+    <title>CrimeFreeBooking</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -26,7 +26,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div class="jumbotron">
   	</style>
   	
-
     <center>
     <font size="5" color="#341D8F" >Welcome to CrimeFreeBooking</font>
     <br>

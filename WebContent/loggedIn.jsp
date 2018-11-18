@@ -11,6 +11,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
+    
+    <!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	
     <title>CrimeFreeBooking</title>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -18,25 +22,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
   </head>
   <body>
+     <style>
+		body {
+    		background-color: #ccebff;
+		}
+  	<div class="jumbotron">
+  	</style>
+  	
     <center>
     <%
      String name = new String(request.getParameter("username").getBytes("8859_1"));
-     out.println("Welcome:" + name);
-    %><br>
-    <a href="login.jsp">Log out</a>
+     out.println("<font size=\"7\" class=\"alert alert-success\" role=\"alert\"> Welcome: " + name + "</font>");
+    %><br><br><br>
+    <a href="login.jsp"><font size="3" class="alert alert-danger"><u>Log Out</u></font></a>
     </center>
     
-    <font size="10" color="#000" >Find Listings by Price</font>
-    <hr>
+    <font size="5" color="#341D8F" ><strong>Find Listings by Price</strong></font>
+    <br>
+    <img src="https://image.flaticon.com/icons/svg/126/126073.svg" width="150" height="150" alt="Etiqueta del precio icono gratis" title="Etiqueta del precio icono gratis">
       <form action="FindListingByPrice" method="get">
-        UserName:   	
+        <strong>UserName</strong>:   	
       	<%  
       		out.println("<input name=\"username\" type=\"text\" value=\"" + name + "\"");
 		%>
 		<br>
 		<br>
-      	Maximum Accepted Price ：<input type="text" name="price"/><br>
-        <input type="submit" />
+      	<strong>Maximum Accepted Price</strong> ：<input type="text" name="price"/><br>
+        <input type="submit" class="btn btn-danger"/>
       </form>
       <br>
       <c:forEach items="${messages}" var="messages" >
@@ -45,19 +57,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <br>
         <table border="1">
             <tr>
-            	<th>Options</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Street1</th>
-                <th>Street2</th>
-                <th>City</th>
-                <th>State</th>
-                <th>ZipCode</th>
-                <th>Property Type</th>
-                <th>Room Type</th>
-                <th>Bathrooms</th>
-                <th>Bedrooms</th>
-                <th>Beds</th>
+            	<th><span class="label label-default">Options</span></th>
+                <th><span class="label label-primary">Title</span></th>
+                <th><span class="label label-success">Price</span></th>
+                <th><span class="label label-success">Street1</span></th>
+                <th><span class="label label-success">Street2</span></th>
+                <th><span class="label label-success">City</span></th>
+                <th><span class="label label-success">State</span></th>
+                <th><span class="label label-success">ZipCode</span></th>
+                <th><span class="label label-warning">Property Type</span></th>
+                <th><span class="label label-warning">Room Type</span></th>
+                <th><span class="label label-warning">Bathrooms</span></th>
+                <th><span class="label label-warning">Bedrooms</span></th>
+                <th><span class="label label-warning">Beds</span></th>
             </tr>
             <c:forEach items="${listing}" var="listing" >
                 <tr>
@@ -85,19 +97,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <br>
 
     <br>
-    
-    <font size="10" color="#000" >Find Listings by Bedroom and Bathroom Numbers</font>
+    <font size="5" color="#341D8F" ><strong>Find Listings by Bedroom and Bathroom Numbers</strong></font>
+    <br>
+    <img src="https://image.flaticon.com/icons/svg/14/14804.svg" width="150" height="150" alt="Baño de burbujas icono gratis" title="Baño de burbujas icono gratis">
     <hr>
       <form action="FindListingsByBB" method="get">
-        UserName:   	
+        <strong>UserName</strong>:   	
       	<%  
       		out.println("<input name=\"username\" type=\"text\" value=\"" + name + "\"");
 		%>
 		<br>
 		<br>
-      	Minimum Bathroom Number ：<input type="text" name="bathroom"/><br>
-      	Minimum Bedroom Number ：<input type="text" name="bedroom"/><br>
-        <input type="submit" />
+      	<strong>Minimum Bathroom Number</strong> ：<input type="text" name="bathroom"/><br>
+      	<strong>Minimum Bedroom Number</strong> ：<input type="text" name="bedroom"/><br>
+        <input type="submit" class="btn btn-danger"/>
       </form>
       <br>
       <c:forEach items="${messagesPriceByBB}" var="messagesPriceByBB" >
@@ -106,19 +119,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <br>
         <table border="1">
             <tr>
-            	<th>Options</th>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Street1</th>
-                <th>Street2</th>
-                <th>City</th>
-                <th>State</th>
-                <th>ZipCode</th>
-                <th>Property Type</th>
-                <th>Room Type</th>
-                <th>Bathrooms</th>
-                <th>Bedrooms</th>
-                <th>Bedrooms</th>
+                <th><span class="label label-default">Options</span></th>
+                <th><span class="label label-primary">Title</span></th>
+                <th><span class="label label-success">Price</span></th>
+                <th><span class="label label-success">Street1</span></th>
+                <th><span class="label label-success">Street2</span></th>
+                <th><span class="label label-success">City</span></th>
+                <th><span class="label label-success">State</span></th>
+                <th><span class="label label-success">ZipCode</span></th>
+                <th><span class="label label-warning">Property Type</span></th>
+                <th><span class="label label-warning">Room Type</span></th>
+                <th><span class="label label-warning">Bathrooms</span></th>
+                <th><span class="label label-warning">Bedrooms</span></th>
+                <th><span class="label label-warning">Beds</span></th>
             </tr>
             <c:forEach items="${listingByBB}" var="listingByBB" >
                 <tr>
@@ -147,7 +160,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <br>
     
-    <font size="10" color="#000" >My WishList</font>
+    <font size="5" color="#341D8F" ><strong>My WishList</strong></font>
+    <br>
+    <img src="https://image.flaticon.com/icons/svg/1146/1146064.svg" width="150" height="150" alt="Carta amorosa icono gratis" title="Carta amorosa icono gratis">
     <hr>
     <%
     Users requestedUser = UsersDao.getInstance().getUserByUserName(name);
@@ -168,7 +183,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <br>
     <br>
     
-    <font size="10" color="#000" >My Recommendations</font>
+    <font size="5" color="#341D8F" ><strong>My Recommendations</strong></font>
+    <br>
+    <img src="https://image.flaticon.com/icons/svg/654/654076.svg" width="150" height="150" alt="Calidad icono gratis" title="Calidad icono gratis">
     <hr>
     <%
     List<Recommendations> myRecommendation = RecommendationsDao.getInstance().getRecommendationsByUser(requestedUser);
@@ -186,7 +203,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <br>
     
-    <font size="10" color="#000" >My Reviews</font>
+    <font size="5" color="#341D8F" ><strong>My Reviews</strong></font>
+    <br>
+    <img src="https://image.flaticon.com/icons/svg/1260/1260162.svg" width="150" height="150" alt="Clasificación icono gratis" title="Clasificación icono gratis">
     <hr>
        
     <%
@@ -205,13 +224,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        
     <br>
     
-    <font size="10" color="#000" >My Preference</font>
+    <font size="5" color="#341D8F" ><strong>My Preferences</strong></font>
+    <br>
+    <img src="https://image.flaticon.com/icons/svg/62/62297.svg" width="150" height="150" alt="Botón ajustes de carpeta icono gratis" title="Botón ajustes de carpeta icono gratis">
     <hr>
     <%
     List<Preferences> myPreference = PreferencesDao.getInstance().getPreferenceOfUser(requestedUser);
     
     if (myPreference.isEmpty()) {
-    	out.println("<br>Empty preference" + "<a href=\"/DBMS_PM4_Hello_World/create-preference?username=" + name + "\"><input type=\"button\" name=\"\" value=\"Create Preference\"></a>");
+    	out.println("<br>Empty preference<br><br>" + "<a href=\"/DBMS_PM4_Hello_World/create-preference?username=" + name + "\"><input type=\"button\" name=\"\" value=\"Create Preference\" class=\"alert alert-success\"></a>");
     } else {
     	for (Preferences pref : myPreference) {
     		out.println("<br>" + pref.toString());
@@ -224,5 +245,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	//out.println("<a href=\"/DBMS_PM4_Hello_World/GenerateRecommendation.jsp?bathroom=" + myPreference.get(0).getBathrooms() + "&bedroom=" + myPreference.get(0).getBedrooms() + "><button>Generate Smart Recommendations</button></a>");
    	}
     %>
+    
+    <!-- Bootstrap -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
   </body>
 </html>
