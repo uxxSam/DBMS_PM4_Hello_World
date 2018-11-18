@@ -62,7 +62,8 @@
                 </tr>
             </c:forEach>
        </table>
-      <br>
+      <br><br><br>
+      <a href="login.jsp"><font size="3" class="btn btn-sm btn-danger">Back</font></a>
       
     <!-- Bootstrap -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

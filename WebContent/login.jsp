@@ -33,15 +33,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <br> 
     
     <font size="5" color="#341D8F" >Please Login</font>
+    <br>
+    <br>
   	<%  
     String flag = request.getParameter("errNo");  
     try{
          if(flag!=null)
-            out.println("<br>Wrong Username password combiantion!\n");
+            out.println("<font size=\"1\" class=\"alert alert-danger\" role=\"alert\">Wrong Username/Password combination!</font>");
     }catch(Exception e){
         e.printStackTrace();
     }
    %>
+   <br>
+   <br>
   	<form action = "loginCheck.jsp" method="post">
       <table width="350" height = "180" border="5" bordercolor="#2464B1"> 
  		<tr>
@@ -66,8 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	  </table>
  	</form>
   </center>
-  
-  </div>
+
   
     <!-- Bootstrap -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

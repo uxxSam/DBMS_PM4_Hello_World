@@ -42,7 +42,7 @@ body {
       <c:forEach items="${messages}" var="messages" >
      	 <span id="successMessage"><b>${messages}</b></span>
 	  </c:forEach>
-      <br>
+      <a href="login.jsp"><font size="3" class="btn btn-sm btn-danger">Back</font></a>
       
       </div>
       
