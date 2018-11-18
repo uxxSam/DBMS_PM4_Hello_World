@@ -20,9 +20,9 @@
 		}
   	  <div class="jumbotron">
   	  </style>
-      <font size="5" color="#341D8F"><strong>Update your preferences</strong></font>
+      <font size="5" color="#341D8F"><strong>Update Your Preferences</strong></font>
       <br>
-      <img width="150" height="150" class="icon" src="https://image.freepik.com/free-icon/user-settings-interface-symbol-of-a-man-with-a-cogwheel-on-the-head_318-55056.jpg" alt="User settings interface symbol of a man with a cogwheel on the head Free Icon" title="User settings interface symbol of a man with a cogwheel on the head Free Icon" onerror="this.onerror=null;this.src='/broken-image.gif?https%3A%2F%2Fimage.freepik.com%2Ffree-icon%2Fuser-settings-interface-symbol-of-a-man-with-a-cogwheel-on-the-head_318-55056.jpg';ga('send', 'event', 'broken_image', 'detail', '318_729884');">
+      <img src="https://image.flaticon.com/icons/svg/39/39383.svg" width="150" height="150" alt="Configuración personal símbolo de seo en contorno para la interfaz icono gratis" title="Configuración personal símbolo de seo en contorno para la interfaz icono gratis">
       <hr>
       <form action="UpdatePreference" method="post">
       	<span class="label label-primary">UserName</span>:   	

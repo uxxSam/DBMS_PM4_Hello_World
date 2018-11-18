@@ -54,7 +54,7 @@ public class Wishlists {
 	public String toString() {
 		try {
 			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
-			return "Wish Listing Name: " + listing.getTitle() + "<br>" +
+			return "Wish Listing Name: " + listing.getTitle() + "<br><br>" +
 					"Wish Listing Description: " + listing.getDescription() + "<br>";
 		} catch (SQLException e) {
 			

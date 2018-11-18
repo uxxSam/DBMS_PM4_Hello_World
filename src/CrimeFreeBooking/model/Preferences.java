@@ -57,7 +57,7 @@ public class Preferences {
 
 	@Override
 	public String toString() {
-		return "Preference: bathrooms = " + bathrooms + "\n" + "bedrooms = " + bedrooms + "\n";
+		return "Preferences: bathrooms = " + bathrooms + ", bedrooms = " + bedrooms + "\n";
 	}
 	
 	

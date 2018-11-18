@@ -75,8 +75,8 @@ public class Reviews {
 	public String toString() {
 		try {
 			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
-			return "Reviewed Listing Name: " + listing.getTitle() + "<br>" +
-					"Reviewed Listing Description: " + listing.getDescription() + "<br>" +
+			return "Reviewed Listing Name: " + listing.getTitle() + "<br><br>" +
+					"Reviewed Listing Description: " + listing.getDescription() + "<br><br>" +
 					"Reviewed Date: "+ this.reviewDate + "<br>" +
 					"Review Content: " + this.content + "<br>";
 		} catch (SQLException e) {

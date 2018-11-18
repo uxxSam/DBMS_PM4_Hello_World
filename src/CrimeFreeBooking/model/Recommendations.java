@@ -52,7 +52,7 @@ public class Recommendations {
 	public String toString() {
 		try {
 			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
-			return "Recommended Listing Name: " + listing.getTitle() + "<br>" +
+			return "Recommended Listing Name: " + listing.getTitle() + "<br><br>" +
 					"Recommended Listing Description: " + listing.getDescription() + "<br>";
 		} catch (SQLException e) {
 			

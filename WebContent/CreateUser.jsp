@@ -37,12 +37,13 @@ body {
       	<span class="label label-success">Country</span> ：<input type="text" name="country"/><br>
         <br>
         <input type="submit" class="btn btn-danger"/>
+        <a href="login.jsp"><font class="btn btn btn-danger">Back</font></a>
       </form>
       <br>
       <c:forEach items="${messages}" var="messages" >
      	 <span id="successMessage"><b>${messages}</b></span>
 	  </c:forEach>
-      <a href="login.jsp"><font size="3" class="btn btn-sm btn-danger">Back</font></a>
+      
       
       </div>
       
