@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
 
+import CrimeFreeBooking.dal.PreferencesDao;
 import CrimeFreeBooking.dal.WishlistsDao;
 import CrimeFreeBooking.model.Wishlists;
 
@@ -42,12 +43,27 @@ public class CreateWishList extends HttpServlet {
 		response.setHeader("Content-Type", "text/html; charset=UTF-8");
 		List<String> messageList = new ArrayList<>();
 		
+		out.write("<html>");
+        out.write("<head>");
+        out.write("<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">");
+        out.write("</head>");
+        out.write("<body>");
+        out.write("<style> body { background-color: #ccebff; } <div class=\"jumbotron\"> </style>");
+        out.write("<br>");
+		
 		try {
 			WishlistsDao.getInstance().create(newWish);
+			out.write("<font size=\"3\" class=\"alert alert-success\">Successfully added to your wishlist! Log out and log in to see the update!<br></font><br><br>");
+
 		} catch (SQLException e) {
-			out.write("Failed to add to your wishlist");
+			out.write("<font size=\"3\" class=\"alert alert-danger\">Failed to add to your wishlist!<br></font><br><br>");
+
 		}
-		out.write("Successfully added to your wishlist! Log out and log in to see the update");
+		
+		out.write("<a href=\"login.jsp\"><font size=\"3\" class=\"alert alert-danger\"><u>Log Out</u></font></a>");
+		out.write("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script> <!-- Include all compiled plugins (below), or include individual files as needed --> <script src=\"js/bootstrap.min.js\"></script>");
+		out.write("</body>");
+        out.write("</html>");
 	}
 
 }

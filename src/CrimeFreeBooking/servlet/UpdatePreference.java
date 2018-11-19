@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import CrimeFreeBooking.model.Preferences;
 import CrimeFreeBooking.model.Users;
 import CrimeFreeBooking.dal.PreferencesDao;
+import CrimeFreeBooking.dal.WishlistsDao;
 
 /**
  * Servlet implementation class CreateUser
@@ -46,11 +47,26 @@ public class UpdatePreference extends HttpServlet {
 		Preferences newPreference = new Preferences(new Random().nextInt(Integer.MAX_VALUE), user, Integer.parseInt(bathroom), Integer.parseInt(bedroom));
 		Writer out=response.getWriter();
 		
+		out.write("<html>");
+        out.write("<head>");
+        out.write("<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">");
+        out.write("</head>");
+        out.write("<body>");
+        out.write("<style> body { background-color: #ccebff; } <div class=\"jumbotron\"> </style>");
+        out.write("<br>");
+        
 		try {
 			PreferencesDao.getInstance().create(newPreference);
-			out.write("Successfully updated preference! Log out and login to see the update");
+			out.write("<font size=\"3\" class=\"alert alert-success\">Successfully updated preference! Log out and login again to see update!<br></font><br><br>");
+
 		} catch (SQLException e) {
-			out.write("Failed to update preference");
-		} 
+			out.write("<font size=\"3\" class=\"alert alert-danger\">Failed to update preference!<br></font><br><br>");
+
+		}
+		
+		out.write("<a href=\"login.jsp\"><font size=\"3\" class=\"alert alert-danger\"><u>Log Out</u></font></a>");
+		out.write("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script> <!-- Include all compiled plugins (below), or include individual files as needed --> <script src=\"js/bootstrap.min.js\"></script>");
+		out.write("</body>");
+        out.write("</html>");
 	}
 }

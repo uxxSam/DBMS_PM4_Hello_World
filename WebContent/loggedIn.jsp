@@ -185,7 +185,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     List<Wishlists> myWishList = WishlistsDao.getInstance().getWishlistsForUser(requestedUser);
     
     if (myWishList.isEmpty()) {
-    	out.println("<br>Empty wishlist");
+    	out.println("<br> <Font class=\"label label-warning\">Empty Wishlist</Font>");
     } else {
     	for (int i = 0; i < myWishList.size(); i++) {
     		Wishlists wish = myWishList.get(i);
@@ -216,7 +216,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     List<Recommendations> myRecommendation = RecommendationsDao.getInstance().getRecommendationsByUser(requestedUser);
     
     if (myRecommendation.isEmpty()) {
-    	out.println("<br>Empty recommendation");
+    	out.println("<br> <Font class=\"label label-warning\">Empty Recommendations</Font>");
     } else {
     	for (int i = 0; i < myRecommendation.size(); i++) {
     		Recommendations rec = myRecommendation.get(i);
@@ -236,7 +236,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     %>
     
     <br>
-    
+    <br>
     <font size="5" color="#341D8F" ><strong>My Reviews</strong></font>
     <br>
     <img src="https://image.flaticon.com/icons/svg/1260/1260162.svg" width="150" height="150" alt="Clasificación icono gratis" title="Clasificación icono gratis">
@@ -246,7 +246,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     List<Reviews> myReviews = ReviewsDao.getInstance().getReviewByUserName(name);
 
     if (myReviews.isEmpty()) {
-    	out.println("<br>No Reviews");
+    	out.println("<br> <Font class=\"label label-warning\">No Reviews</Font>");
     } else {
     	for (int i = 0; i < myReviews.size(); i++) {
     		Reviews review = myReviews.get(i);
@@ -275,7 +275,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     List<Preferences> myPreference = PreferencesDao.getInstance().getPreferenceOfUser(requestedUser);
     
     if (myPreference.isEmpty()) {
-    	out.println("<br>Empty preference<br><br>" + "<a href=\"/DBMS_PM4_Hello_World/create-preference?username=" + name + "\"><input type=\"button\" name=\"\" class=\"btn btn-danger\" value=\"Create Preference\" class=\"alert alert-success\"></a>");
+    	out.println("<br> <Font class=\"label label-warning\">Empty Preferences</Font><br><br>");
+    	out.println("<a href=\"/DBMS_PM4_Hello_World/create-preference?username=" + name + "\"><input type=\"button\" name=\"\" class=\"btn btn-danger\" value=\"Create Preference\" class=\"alert alert-success\"></a>");
     } else {
     	for (Preferences pref : myPreference) {
     		%>

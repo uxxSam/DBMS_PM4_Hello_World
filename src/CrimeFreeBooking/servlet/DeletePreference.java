@@ -43,25 +43,26 @@ public class DeletePreference extends HttpServlet {
 		response.setHeader("Content-Type", "text/html; charset=UTF-8");
 		Preferences pref = null;
 		
-		out.println("<html>");
-        out.println("<head>");
-        out.println("<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<style> body { background-color: #ccebff; } <div class=\"jumbotron\"> </style>");
+		out.write("<html>");
+        out.write("<head>");
+        out.write("<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">");
+        out.write("</head>");
+        out.write("<body>");
+        out.write("<style> body { background-color: #ccebff; } <div class=\"jumbotron\"> </style>");
+        out.write("<br>");
 
 		
 		try {
 			pref = PreferencesDao.getInstance().getPreferenceById(Integer.parseInt(id));
 			PreferencesDao.getInstance().delete(pref.getPreferenceId());
+			out.write("<font size=\"3\" class=\"alert alert-success\">Successfully deleted preference! Log out and login again to see update!<br></font><br><br>");
 		} catch (SQLException e) {
-			out.println("Failed to delete preference!");
+			out.write("<font size=\"3\" class=\"alert alert-danger\">Failed to delete preference!<br></font><br><br>");
 		}
 
-		out.println("Successfully deleted preference! Log out and login again to see update<br>");
-		out.println("<a href=\"login.jsp\"><font size=\"3\" class=\"alert alert-danger\"><u>Log Out</u></font></a>");
-		out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script> <!-- Include all compiled plugins (below), or include individual files as needed --> <script src=\"js/bootstrap.min.js\"></script>");
-		out.println("</body>");
-        out.println("</html>");
+		out.write("<a href=\"login.jsp\"><font size=\"3\" class=\"alert alert-danger\"><u>Log Out</u></font></a>");
+		out.write("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script> <!-- Include all compiled plugins (below), or include individual files as needed --> <script src=\"js/bootstrap.min.js\"></script>");
+		out.write("</body>");
+        out.write("</html>");
 	}
 }

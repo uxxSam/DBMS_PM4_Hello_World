@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import CrimeFreeBooking.dal.RecommendationsDao;
+import CrimeFreeBooking.dal.WishlistsDao;
 import CrimeFreeBooking.model.Recommendations;
 
 /**
@@ -42,12 +43,26 @@ public class CreateRecommendation extends HttpServlet {
 		response.setHeader("Content-Type", "text/html; charset=UTF-8");
 		List<String> messageList = new ArrayList<>();
 		
+		out.write("<html>");
+        out.write("<head>");
+        out.write("<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">");
+        out.write("</head>");
+        out.write("<body>");
+        out.write("<style> body { background-color: #ccebff; } <div class=\"jumbotron\"> </style>");
+        out.write("<br>");
+        
 		try {
 			RecommendationsDao.getInstance().create(newWish);
+			out.write("<font size=\"3\" class=\"alert alert-success\">Successfully recommended this listing! Log out and log in to see the update!<br></font><br><br>");
+
 		} catch (SQLException e) {
-			out.write("Failed to recommend this listing");
+			out.write("<font size=\"3\" class=\"alert alert-danger\">Failed to recommend this listing!<br></font><br><br>");
 		}
-		out.write("Successfully recommended this listing! Log out and log in to see the update");
+		
+		out.write("<a href=\"login.jsp\"><font size=\"3\" class=\"alert alert-danger\"><u>Log Out</u></font></a>");
+		out.write("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script> <!-- Include all compiled plugins (below), or include individual files as needed --> <script src=\"js/bootstrap.min.js\"></script>");
+		out.write("</body>");
+        out.write("</html>");
 	}
 
 }

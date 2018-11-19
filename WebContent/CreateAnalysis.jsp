@@ -75,7 +75,9 @@
             </tbody>
        </table>
        </div>
-      <br>
+      <br><br><br><br><br>
+      <a href="login.jsp"><font size="3" class="btn btn btn-danger">Log Out</font></a>
+      
       
     <!-- Bootstrap -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
