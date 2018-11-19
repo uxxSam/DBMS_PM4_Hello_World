@@ -37,27 +37,30 @@
 
 		<span class="label label-primary">Radius(m)</span> ：<input type="text" name="radius"/>
 
-        <br>
-        <br>
+        <br><br>
         <input type="submit" class="btn btn-danger"/>
+        <br><br>
       </form>
-      <br>
       <c:forEach items="${messages}" var="messages" >
-     	 <span id="successMessage"><b>${messages}</b></span>
+     	 <span class="alert alert-info" role="alert" id="successMessage"><b>${messages}</b></span>
 	  </c:forEach>
       <br>
       
       <br>
-        <table border="1">
+       <div class="col-md-6">
+          <table class="table">
+            <thead>
             <tr>
-            	<th>Crime Count within Radius</th>
-                <th>Most Frequent Crime Type</th>
-                <th>Most Frequent Crime Count</th>
-                <th>2nd Most Frequent Crime Type</th>
-                <th>2nd Most Frequent Crime Count</th>
-                <th>3rd Most Frequent Crime Type</th>
-                <th>3rd Most Frequent Crime Count</th>
+            	<th><span class="label label-default"> Crime Count within Radius</span></th>
+                <th><span class="label label-primary"> Most Frequent Crime Type</span></th>
+                <th><span class="label label-primary"> Most Frequent Crime Count</span></th>
+                <th><span class="label label-success"> 2nd Most Frequent Crime Type</span></th>
+                <th><span class="label label-success"> 2nd Most Frequent Crime Count</span></th>
+                <th><span class="label label-info"> 3rd Most Frequent Crime Type</span></th>
+                <th><span class="label label-info"> 3rd Most Frequent Crime Count</span></th>
             </tr>
+            </thead>
+            <tbody>
             <c:forEach items="${crime}" var="crime" >
                 <tr>
 					<td><c:out value="${crime.get(0)}" /></td>
@@ -69,7 +72,9 @@
 					<td><c:out value="${crime.get(6)}" /></td>
                 </tr>
             </c:forEach>
+            </tbody>
        </table>
+       </div>
       <br>
       
     <!-- Bootstrap -->

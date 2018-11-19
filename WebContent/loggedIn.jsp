@@ -56,9 +56,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </form>
       <br>
       <c:forEach items="${messages}" var="messages" >
-     	 <span id="successMessage"><b>${messages}</b></span>
+     	 <span class="alert alert-info" role="alert" id="successMessage"><b>${messages}</b></span>
 	  </c:forEach>
-      <br>
+      <br><br>
        <div class="col-md-6">
           <table class="table">
             <thead>
@@ -123,9 +123,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </form>
       <br>
       <c:forEach items="${messagesPriceByBB}" var="messagesPriceByBB" >
-     	 <span id="successMessage"><b>${messagesPriceByBB}</b></span>
+     	 <span class="alert alert-info" role="alert" id="successMessage"><b>${messagesPriceByBB}</b></span>
 	  </c:forEach>
-      <br>
+      <br><br>
        <div class="col-md-6">
           <table class="table">
             <thead>
@@ -170,10 +170,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </c:forEach>
             </tbody>
        </table>
-      <br>
-
+       </div>
     <br>
-    
+    <br>
+   	<br>
     <font size="5" color="#341D8F" ><strong>My WishList</strong></font>
     <br>
     <img src="https://image.flaticon.com/icons/svg/1146/1146064.svg" width="150" height="150" alt="Carta amorosa icono gratis" title="Carta amorosa icono gratis">
@@ -273,7 +273,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	// System.out.println(myPreference.get(0).getPreferenceId());
     	out.println("<a href=\"/DBMS_PM4_Hello_World/update-preference?id=" + myPreference.get(0).getPreferenceId() + "&username=" + name + "\"><input type=\"button\" name=\"\" class=\"btn btn-primary\" value=\"Update Preferences\"></a>");
     	out.println("<a href=\"/DBMS_PM4_Hello_World/DeletePreference?id=" + myPreference.get(0).getPreferenceId() + "\"><input type=\"button\" name=\"\" class=\"btn btn-danger\" value=\"Delete Preference\"></a>");
-    	out.println("<a href=\"/DBMS_PM4_Hello_World/GenerateRecommendation.jsp?bathroom=" + myPreference.get(0).getBathrooms() + "&bedroom=" + myPreference.get(0).getBedrooms() + "\"><input type=\"button\" name=\"\"class=\"btn btn-success\"  value=\"Generate Smart Recommendations\"></a>");
+    	out.println("<a href=\"/DBMS_PM4_Hello_World/GenerateRecommendation.jsp?bathroom=" + myPreference.get(0).getBathrooms() + "&bedroom=" + myPreference.get(0).getBedrooms() + "\"><input type=\"button\" name=\"\"class=\"btn btn-success\" value=\"Generate Smart Recommendations\"></a>");
     	//System.out.println("<a href=\"/DBMS_PM4_Hello_World/GenerateRecommendation.jsp?bathroom=" + myPreference.get(0).getBathrooms() + "&bedroom=" + myPreference.get(0).getBedrooms() + "><button>Generate Smart Recommendations</button></a>");
     	//out.println("<a href=\"/DBMS_PM4_Hello_World/GenerateRecommendation.jsp?bathroom=" + myPreference.get(0).getBathrooms() + "&bedroom=" + myPreference.get(0).getBedrooms() + "><button>Generate Smart Recommendations</button></a>");
    	}

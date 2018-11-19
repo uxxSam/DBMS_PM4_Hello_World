@@ -51,6 +51,6 @@ public class UpdatePreference extends HttpServlet {
 			out.write("Successfully updated preference! Log out and login to see the update");
 		} catch (SQLException e) {
 			out.write("Failed to update preference");
-		}		
+		} 
 	}
 }
