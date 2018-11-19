@@ -1,6 +1,7 @@
 package CrimeFreeBooking.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.*;
 import java.io.IOException;
@@ -35,20 +36,32 @@ public class DeletePreference extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Writer out=response.getWriter();
+		PrintWriter out=response.getWriter();
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		response.setHeader("Content-Type", "text/html; charset=UTF-8");
 		Preferences pref = null;
 		
+		out.println("<html>");
+        out.println("<head>");
+        out.println("<link href=\"css/bootstrap.min.css\" rel=\"stylesheet\">");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<style> body { background-color: #ccebff; } <div class=\"jumbotron\"> </style>");
+
+		
 		try {
 			pref = PreferencesDao.getInstance().getPreferenceById(Integer.parseInt(id));
 			PreferencesDao.getInstance().delete(pref.getPreferenceId());
 		} catch (SQLException e) {
-			out.write("Failed to delete preference!");
+			out.println("Failed to delete preference!");
 		}
 
-		out.write("Successfully deleted preference! Log out and login again to see update");
+		out.println("Successfully deleted preference! Log out and login again to see update<br>");
+		out.println("<a href=\"login.jsp\"><font size=\"3\" class=\"alert alert-danger\"><u>Log Out</u></font></a>");
+		out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script> <!-- Include all compiled plugins (below), or include individual files as needed --> <script src=\"js/bootstrap.min.js\"></script>");
+		out.println("</body>");
+        out.println("</html>");
 	}
 }

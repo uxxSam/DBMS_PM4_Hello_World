@@ -46,12 +46,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <img src="https://image.flaticon.com/icons/svg/63/63720.svg" width="150" height="150" alt="Edificio 3D icono gratis" title="Edificio 3D icono gratis">
      </center>
      <br>
-     <%
-           for (int i = 0; i < Math.min(10, listings.size()); i++) {
-        	   out.println(listings.get(i).toString());
-        	   out.println("<br><br>");
-           }
-     %>
+     
+     <table class="table">
+            <thead>
+            <tr>
+            	<th><span class="label label-default">listingId</span></th>
+                <th><span class="label label-primary">URL</span></th>
+                <th><span class="label label-success">title</span></th>
+                <th><span class="label label-success">price</span></th>
+                <th><span class="label label-success">Street1</span></th>
+                <th><span class="label label-success">Street2</span></th>
+                <th><span class="label label-success">City</span></th>
+                <th><span class="label label-success">State</span></th>
+                <th><span class="label label-success">ZipCode</span></th>
+                <th><span class="label label-warning">Property Type</span></th>
+                <th><span class="label label-warning">Room Type</span></th>
+                <th><span class="label label-warning">Bathrooms</span></th>
+                <th><span class="label label-warning">Bedrooms</span></th>
+                <th><span class="label label-warning">Beds</span></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                     <%
+				           for (int i = 0; i < Math.min(10, listings.size()); i++) {
+				        	   out.println("<tr><td>" + listings.get(i).getListingId() + "</td>");
+				        	   out.println("<td> <a href=\"" + listings.get(i).getUrl() + "\">" + listings.get(i).getUrl() + "</a></td>");
+				        	   out.println("<td>" + listings.get(i).getTitle() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getPrice() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getStreet1() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getStreet2() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getCity() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getState() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getZipCode() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getPropertyType() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getRoomType() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getBathrooms() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getBedrooms() + "</td>");
+				        	   out.println("<td>" + listings.get(i).getBeds() + "</td></tr>");
+				           }
+				     %>
+                </tr>
+            </tbody>
+       </table>
      
     <!-- Bootstrap -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

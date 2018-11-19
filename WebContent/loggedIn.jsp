@@ -189,7 +189,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		Wishlists wish = myWishList.get(i);
     	%>
     	<div class="page-header">
-	        <h1> <%out.println(wish.toStringTitle());%></h1>
+	        <h1> <%
+	        		Listings listing = ListingsDao.getInstance().getListingById(wish.getListing());
+	        		out.println(listing.getTitle());
+	        	%>
+	        </h1>
         </div>
           <%
     		out.println("<font color=\"#341D8F\">" + wish.toString() + "</font>");
@@ -216,7 +220,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		Recommendations rec = myRecommendation.get(i);
         	%>
         	<div class="page-header">
-    	        <h1> <%out.println(rec.toStringTitle());%></h1>
+    	        <h1> <%
+    	        		Listings listing = ListingsDao.getInstance().getListingById(rec.getListing());
+    	        		out.println(listing.getTitle());
+    	        	%>
+    	        </h1>
             </div>
             <%
     		out.println("<br><font color=\"#341D8F\">" + rec.toString() + "</font>");
@@ -242,7 +250,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		Reviews review = myReviews.get(i);
         	%>
         	<div class="page-header">
-    	        <h1> <%out.println(review.toStringTitle());%></h1>
+    	        <h1> <%
+    	        		Listings listing = ListingsDao.getInstance().getListingById(review.getListing());
+    	        		out.println(review.toStringTitle());
+    	        	%>
+    	       	</h1>
             </div>
             <%
     		out.println("<br><font color=\"#341D8F\">" + review.toString() + "</font>");
