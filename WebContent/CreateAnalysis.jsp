@@ -21,12 +21,12 @@
 		}
   	  <div class="jumbotron">
   	  </style>
-      <font size="5" color="#341D8F"><strong>Generate Safety Analysis for listing</strong></font>
+      <font size="5" color="#341D8F"><strong>Generate Safety Analysis for Listing</strong></font>
       <br>
-      <img width="150" height="150" class="icon" src="https://image.freepik.com/free-icon/user-settings-interface-symbol-of-a-man-with-a-cogwheel-on-the-head_318-55056.jpg" alt="User settings interface symbol of a man with a cogwheel on the head Free Icon" title="User settings interface symbol of a man with a cogwheel on the head Free Icon" onerror="this.onerror=null;this.src='/broken-image.gif?https%3A%2F%2Fimage.freepik.com%2Ffree-icon%2Fuser-settings-interface-symbol-of-a-man-with-a-cogwheel-on-the-head_318-55056.jpg';ga('send', 'event', 'broken_image', 'detail', '318_729884');">
+      <img src="https://image.flaticon.com/icons/svg/1/1252.svg" width="150" height="150" alt="Ojo visto a través de lupa icono gratis" title="Ojo visto a través de lupa icono gratis">
       <hr>
       <form action="CreateAnalysis" method="post">
-      	<span class="label label-primary">Listing ID</span>:   	
+      	<span class="label label-primary">Listing ID</span> :   	
       	<%  
 		    String listingid = request.getParameter("listingid");
       		out.println("<input name=\"listingid\" type=\"text\" value=\"" + listingid + "\"");

@@ -47,13 +47,23 @@ public class Recommendations {
 	public void setListing(int listing) {
 		this.listing = listing;
 	}
+	
+	public String toStringTitle() {
+		try {
+			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
+			return listing.getTitle();
+		} catch (SQLException e) {
+			
+		}
+		
+		return "";
+	}
 
 	@Override
 	public String toString() {
 		try {
 			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
-			return "Recommended Listing Name: " + listing.getTitle() + "<br><br>" +
-					"Recommended Listing Description: " + listing.getDescription() + "<br>";
+			return "Recommended Listing Description: " + listing.getDescription() + "<br>";
 		} catch (SQLException e) {
 			
 		}

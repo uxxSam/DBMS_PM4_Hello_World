@@ -70,13 +70,23 @@ public class Reviews {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	public String toStringTitle() {
+		try {
+			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
+			return listing.getTitle();
+		} catch (SQLException e) {
+			
+		}
+		
+		return "";
+	}
 
 	@Override
 	public String toString() {
 		try {
 			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
-			return "Reviewed Listing Name: " + listing.getTitle() + "<br><br>" +
-					"Reviewed Listing Description: " + listing.getDescription() + "<br><br>" +
+			return "Reviewed Listing Description: " + listing.getDescription() + "<br><br>" +
 					"Reviewed Date: "+ this.reviewDate + "<br>" +
 					"Review Content: " + this.content + "<br>";
 		} catch (SQLException e) {

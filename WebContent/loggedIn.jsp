@@ -214,7 +214,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     } else {
     	for (int i = 0; i < myRecommendation.size(); i++) {
     		Recommendations rec = myRecommendation.get(i);
-    		out.println("<br><font color=\"#341D8F\">" + (i + 1) + ") " + rec.toString() + "</font>");
+        	%>
+        	<div class="page-header">
+    	        <h1> <%out.println(rec.toStringTitle());%></h1>
+            </div>
+            <%
+    		out.println("<br><font color=\"#341D8F\">" + rec.toString() + "</font>");
     		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteRecommendation?id=" + myRecommendation.get(i).getRecommendationId() + "\"><input type=\"button\" name=\"\" class=\"btn btn-danger\" value=\"Delete Recommendation\"></a><br>");
     	}
     }
@@ -235,7 +240,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     } else {
     	for (int i = 0; i < myReviews.size(); i++) {
     		Reviews review = myReviews.get(i);
-    		out.println("<br><font color=\"#341D8F\">" + (i + 1) + ") " + review.toString() + "</font>");
+        	%>
+        	<div class="page-header">
+    	        <h1> <%out.println(review.toStringTitle());%></h1>
+            </div>
+            <%
+    		out.println("<br><font color=\"#341D8F\">" + review.toString() + "</font>");
     		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteReview?id=" + myReviews.get(i).getReviewId() + "\"><input type=\"button\" name=\"\" class=\"btn btn-danger\" value=\"Delete Review\"></a><br>");
     	}
    	}
@@ -254,7 +264,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	out.println("<br>Empty preference<br><br>" + "<a href=\"/DBMS_PM4_Hello_World/create-preference?username=" + name + "\"><input type=\"button\" name=\"\" class=\"btn btn-danger\" value=\"Create Preference\" class=\"alert alert-success\"></a>");
     } else {
     	for (Preferences pref : myPreference) {
-    		out.println("<font size=\"5\" color=\"#341D8F\">" + pref.toString() + "<br></font>");
+    		%>
+        	<div class="page-header">
+	        <h1> <%out.println(pref.toString());%></h1>
+        	</div>
+        	<%
     	}
     	// System.out.println(myPreference.get(0).getPreferenceId());
     	out.println("<a href=\"/DBMS_PM4_Hello_World/update-preference?id=" + myPreference.get(0).getPreferenceId() + "&username=" + name + "\"><input type=\"button\" name=\"\" class=\"btn btn-primary\" value=\"Update Preferences\"></a>");
