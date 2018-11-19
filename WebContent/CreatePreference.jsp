@@ -40,7 +40,9 @@
       </form>
       <br>
       <c:forEach items="${messages}" var="messages" >
-     	 <span id="successMessage"><b>${messages}</b></span>
+     	 <span id="successMessage" class="alert alert-success" role="alert"><b>${messages}</b></span>
+     	 <br><br>
+     	 <a href="login.jsp"><font size="3" class="btn btn btn-danger">Log Out</font></a>
 	  </c:forEach>
       <br>
       

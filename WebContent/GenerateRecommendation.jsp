@@ -8,6 +8,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
+    <!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    
     <title>CrimeFreeBooking</title>
     
 	<meta http-equiv="pragma" content="no-cache">
@@ -17,6 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
   </head>
   <body>
+    <style>
+		body {
+    		background-color: #ccebff;
+		}
+  	<div class="jumbotron">
+  	</style>
     <%        
             String bathroom = new String(request.getParameter("bathroom"));
             String bedroom = request.getParameter("bedroom");
@@ -31,12 +40,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     			conn.close();
     		}
             
-            out.println("<font size=\"10\" color=\"#000\">Here are the top 10 recommended listings based on your preference: </font><br>");
-     		
+            out.println("<font size=\"6\" color=\"#341D8F\"><strong><center>Your Personalized Top 10 Recommended Listings</center></strong></font><br>");
+     %>
+     <center>
+     <img src="https://image.flaticon.com/icons/svg/63/63720.svg" width="150" height="150" alt="Edificio 3D icono gratis" title="Edificio 3D icono gratis">
+     </center>
+     <br>
+     <%
            for (int i = 0; i < Math.min(10, listings.size()); i++) {
         	   out.println(listings.get(i).toString());
         	   out.println("<br><br>");
            }
      %>
+     
+    <!-- Bootstrap -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
   </body>
 </html>
