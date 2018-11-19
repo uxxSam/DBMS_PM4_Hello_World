@@ -21,7 +21,7 @@
 		}
   	  <div class="jumbotron">
   	  </style>
-      <font size="5" color="#341D8F"><strong>Create your preferences</strong></font>
+      <font size="5" color="#341D8F"><strong>Create Your Preferences</strong></font>
       <br>
       <img src="https://image.flaticon.com/icons/svg/39/39383.svg" width="150" height="150" alt="Configuración personal símbolo de seo en contorno para la interfaz icono gratis" title="Configuración personal símbolo de seo en contorno para la interfaz icono gratis">      <hr>
       <form action="CreatePreference" method="post">

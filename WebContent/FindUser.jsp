@@ -25,14 +25,15 @@
 	<img src="https://image.flaticon.com/icons/svg/126/126307.svg" width="150" height="150" alt="Binoculares icono gratis" title="Binoculares icono gratis">    <br>
       <hr>
       <form action="FindUsers" method="get">
-      	<span class="label label-primary">UserName</span> ：<input type="text" name="username"/>
+      	<span  class="label label-primary">UserName</span> ：<input type="text" name="username"/>
         &emsp;
         <input type="submit" class="btn btn-sm btn-danger"/>
       </form>
       <br>
       <c:forEach items="${messages}" var="messages" >
-     	 <span id="successMessage"><b><center>${messages}</center></b></span>
+     	 <span class="alert alert-info" role="alert" id="successMessage"><b>${messages}</b></span>
 	  </c:forEach>
+	  <br><br>
        <div class="col-md-6">
           <table class="table">
             <thead>

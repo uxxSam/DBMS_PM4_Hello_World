@@ -171,9 +171,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </tbody>
        </table>
        </div>
-    <br>
-    <br>
-   	<br>
+       
+   <c:forEach items="${listingByBB}" var="listingByBB" >
+    <br><br><br><br><br><br><br><br><br><br>
+   	</c:forEach>
+   	<br><br><br><br><br>
     <font size="5" color="#341D8F" ><strong>My WishList</strong></font>
     <br>
     <img src="https://image.flaticon.com/icons/svg/1146/1146064.svg" width="150" height="150" alt="Carta amorosa icono gratis" title="Carta amorosa icono gratis">
@@ -192,7 +194,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <h1> <%out.println(wish.toStringTitle());%></h1>
         </div>
           <%
-    		out.println("<font color=\"#341D8F\">" + wish.toString() + "</font>");
+    		out.println("<font color=\"#341D8F\">" + wish.toString() + "<br></font>");
     		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteWishlist?id=" + myWishList.get(i).getWishlistId() + "\"><input type=\"button\" name=\"\" class=\"btn btn-danger\" value=\"Delete Wish\"></a>");
     	}
     }

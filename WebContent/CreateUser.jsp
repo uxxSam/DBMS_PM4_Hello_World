@@ -41,7 +41,7 @@ body {
       </form>
       <br>
       <c:forEach items="${messages}" var="messages" >
-     	 <span id="successMessage"><b>${messages}</b></span>
+     	 <span class="alert alert-info" role="alert" id="successMessage"><b>${messages}</b></span>
 	  </c:forEach>
       
       

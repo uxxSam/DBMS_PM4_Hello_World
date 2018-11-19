@@ -48,9 +48,12 @@
       </form>
       <br>
       <c:forEach items="${messages}" var="messages" >
-     	 <span id="successMessage"><b>${messages}</b></span>
+     	 <span class="alert alert-info" role="alert" id="successMessage"><b>${messages}</b></span>
+     	       <a href="login.jsp"><font size="3" class="btn btn-sm btn-danger">Log Out</font></a>
 	  </c:forEach>
       <br>
+      <br>
+
       
     <!-- Bootstrap -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
