@@ -50,12 +50,22 @@ public class Wishlists {
 		this.listing = listing;
 	}
 	
+	public String toStringTitle() {
+		try {
+			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
+			return listing.getTitle() + "<br><br>";
+		} catch (SQLException e) {
+			
+		}
+
+		return "";
+	}
+	
 	@Override
 	public String toString() {
 		try {
 			Listings listing = ListingsDao.getInstance().getListingById(this.listing);
-			return "Wish Listing Name: " + listing.getTitle() + "<br><br>" +
-					"Wish Listing Description: " + listing.getDescription() + "<br>";
+			return "Wish Listing Description:      " + listing.getDescription();
 		} catch (SQLException e) {
 			
 		}

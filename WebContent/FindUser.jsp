@@ -21,8 +21,7 @@
 	}
   	<div class="jumbotron">
   	</style>
-    <font size="5" color="#341D8F" ><strong>Lookup Users by User Name</strong></font>
-    <br>
+    <font size="5" color="#341D8F" ><strong>Lookup Users by User Name</strong><br></font>
 	<img src="https://image.flaticon.com/icons/svg/126/126307.svg" width="150" height="150" alt="Binoculares icono gratis" title="Binoculares icono gratis">    <br>
       <hr>
       <form action="FindUsers" method="get">
@@ -32,9 +31,11 @@
       </form>
       <br>
       <c:forEach items="${messages}" var="messages" >
-     	 <span id="successMessage"><b>${messages}</b></span>
+     	 <span id="successMessage"><b><center>${messages}</center></b></span>
 	  </c:forEach>
-        <table border="1">
+       <div class="col-md-6">
+          <table class="table">
+            <thead>
             <tr>
                 <th> <span class="label label-default">UserName</span> </th>
                 <th> <span class="label label-default">Password</span> </th>
@@ -47,6 +48,8 @@
                 <th> <span class="label label-info">ZipCode</span> </th>
                 <th> <span class="label label-warning">Country</span> </th>
             </tr>
+            </thead>
+            <tbody>
             <c:forEach items="${user}" var="user" >
                 <tr>
                     <td><c:out value="${user.getUserName()}" /></td>
@@ -61,8 +64,8 @@
                     <td><c:out value="${user.getCountry()}" /></td>
                 </tr>
             </c:forEach>
+            </tbody>
        </table>
-      <br><br><br>
       <a href="login.jsp"><font size="3" class="btn btn-sm btn-danger">Back</font></a>
       
     <!-- Bootstrap -->

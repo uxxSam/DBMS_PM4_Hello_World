@@ -39,17 +39,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="login.jsp"><font size="3" class="alert alert-danger">Back</font></a>
     </center>
     
-    <font size="5" color="#341D8F" ><strong>Find Listings by Price</strong></font>
+    <font size="5" color="#341D8F" ><strong>&emsp;Find Listings by Price</strong></font>
     <br>
+    <font>&emsp;</font> 
     <img src="https://image.flaticon.com/icons/svg/126/126073.svg" width="150" height="150" alt="Etiqueta del precio icono gratis" title="Etiqueta del precio icono gratis">
       <form action="FindListingByPrice" method="get">
-        <strong>UserName</strong>:   	
+        <strong>&emsp;UserName</strong>:   	
       	<%  
       		out.println("<input name=\"username\" type=\"text\" value=\"" + name + "\"");
 		%>
 		<br>
 		<br>
-      	<strong>Maximum Accepted Price</strong> ：<input type="text" name="price"/><br>
+      	<strong>&emsp;Maximum Accepted Price</strong> ：<input type="text" name="price"/><br>
+      	<font>&emsp;</font> 
         <input type="submit" class="btn btn-danger"/>
       </form>
       <br>
@@ -57,7 +59,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	 <span id="successMessage"><b>${messages}</b></span>
 	  </c:forEach>
       <br>
-        <table border="1">
+       <div class="col-md-6">
+          <table class="table">
+            <thead>
             <tr>
             	<th><span class="label label-default">Options</span></th>
                 <th><span class="label label-primary">Title</span></th>
@@ -73,6 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <th><span class="label label-warning">Bedrooms</span></th>
                 <th><span class="label label-warning">Beds</span></th>
             </tr>
+            </thead>
+            <tbody>
             <c:forEach items="${listing}" var="listing" >
                 <tr>
                 	<td>
@@ -95,6 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><c:out value="${listing.getBeds()}" /></td>
                 </tr>
             </c:forEach>
+            </tbody>
        </table>
       <br>
 
@@ -119,7 +126,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	 <span id="successMessage"><b>${messagesPriceByBB}</b></span>
 	  </c:forEach>
       <br>
-        <table border="1">
+       <div class="col-md-6">
+          <table class="table">
+            <thead>
             <tr>
                 <th><span class="label label-default">Options</span></th>
                 <th><span class="label label-primary">Title</span></th>
@@ -135,6 +144,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <th><span class="label label-warning">Bedrooms</span></th>
                 <th><span class="label label-warning">Beds</span></th>
             </tr>
+            </thead>
+            <tbody>
             <c:forEach items="${listingByBB}" var="listingByBB" >
                 <tr>
                 	<td>
@@ -157,6 +168,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td><c:out value="${listingByBB.getBeds()}" /></td>
                 </tr>
             </c:forEach>
+            </tbody>
        </table>
       <br>
 
@@ -175,8 +187,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     } else {
     	for (int i = 0; i < myWishList.size(); i++) {
     		Wishlists wish = myWishList.get(i);
-    		out.println("<br><font color=\"#341D8F\">" + (i + 1) + ") " + wish.toString() + "</font>");
-    		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteWishlist?id=" + myWishList.get(i).getWishlistId() + "\"><input type=\"button\" name=\"\" class=\"btn btn-danger\" value=\"Delete Wish\"></a><br>");
+    	%>
+    	<div class="page-header">
+	        <h1> <%out.println(wish.toStringTitle());%></h1>
+        </div>
+          <%
+    		out.println("<font color=\"#341D8F\">" + wish.toString() + "</font>");
+    		out.println("<a href=\"/DBMS_PM4_Hello_World/DeleteWishlist?id=" + myWishList.get(i).getWishlistId() + "\"><input type=\"button\" name=\"\" class=\"btn btn-danger\" value=\"Delete Wish\"></a>");
     	}
     }
     %>
